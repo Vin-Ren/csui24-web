@@ -12,6 +12,10 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        sfPro: ["var(--font-sfPro)", "sans-serif"],
+        monumentExt: ["var(--font-monumentExt)", "sans-serif"],
+      },
     },
   },
   plugins: [],
