@@ -5,10 +5,15 @@ import CustomFont from "next/font/local";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const poppins = Poppins({ weight: ["400", "600"], subsets: ["latin"] });
 const sfPro = localFont({
   src: "./fonts/SF-Pro-Text-Bold.otf",
+  variable: "--font-sfPro",
+});
+const sfSemi = localFont({
+  src: "./fonts/SF-Pro-Text-Semibold.otf",
   variable: "--font-sfPro",
 });
 const monumentExt = localFont({
@@ -28,9 +33,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${monumentExt.variable} ${sfPro.variable}`}>
+      <body
+        className={`${monumentExt.variable} ${sfPro.variable}  ${sfSemi.variable}`}
+      >
         <Navbar />
-        <main>{children}</main>
+        <main className="overflow-hidden">{children}</main>
+        <Footer />
       </body>
     </html>
   );

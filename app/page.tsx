@@ -4,6 +4,7 @@ export default function Home() {
   return (
     <main>
       <LandingPage />
+      <LandingPage />
     </main>
   );
 }

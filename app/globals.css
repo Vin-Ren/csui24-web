@@ -8,5 +8,30 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-sfPro;
+  @apply font-sfSemi;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6c1d36, #1c2da1);
+  border-radius: 6px;
+  border: 2px solid rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #391823, #1a2048);
+  transition: background 0.4s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
