@@ -3,14 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import {
-  Home,
-  Earth,
-  HardHat,
-  Clapperboard,
-  Compass,
-  ChevronDown,
-} from "lucide-react";
+import { Home, Earth, HardHat, Clapperboard, Menu } from "lucide-react";
 
 export default function Navbar({ className }: { className?: string }) {
   const pathname = usePathname();
@@ -30,7 +23,6 @@ export default function Navbar({ className }: { className?: string }) {
       path: "/documentation",
       icon: <Clapperboard size={15} />,
     },
-    { name: "CS Corner", path: "/cs-corner", icon: <Compass size={15} /> },
   ];
 
   const isActive = (path: string) => pathname === path;
@@ -66,7 +58,7 @@ export default function Navbar({ className }: { className?: string }) {
       window.addEventListener("resize", handleResize);
     }
 
-    // Cleanup listeners when dropdown closes
+    // cleanup
     return () => {
       if (dropdownOpen) {
         document.removeEventListener("mousedown", handleClickOutside);
@@ -122,12 +114,12 @@ export default function Navbar({ className }: { className?: string }) {
         className
       )}
     >
-      <nav className="relative rounded-full bg-[#1D1D1D] bg-opacity-75 hover:bg-opacity-50 sm:hover:bg-opacity-75 cursor-pointer sm:cursor-default transition-all duration-300 border-2 border-[#717174] backdrop-blur-sm shadow-input w-fit mx-auto px-8 py-6">
+      <nav className="relative rounded-full bg-[#1D1D1D] bg-opacity-75 hover:bg-opacity-50 sm:hover:bg-opacity-75 cursor-pointer sm:cursor-default transition-all duration-300 border-2 border-[#717174] backdrop-blur-sm shadow-input w-fit mx-auto px-8 py-3 sm:py-6">
         {/* Mobile View */}
         <div className="block sm:hidden text-white">
           <div
             onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="flex justify-between gap-4 items-center cursor-pointer"
+            className="flex justify-between gap-8 items-center cursor-pointer"
           >
             <div className="flex items-center space-x-2 font-sfPro font-extrabold">
               {activeItem.icon}
@@ -140,7 +132,7 @@ export default function Navbar({ className }: { className?: string }) {
               aria-haspopup="true"
               aria-expanded={dropdownOpen}
             >
-              <ChevronDown size={20} />
+              <Menu size={20} />
             </button>
           </div>
         </div>
@@ -167,9 +159,9 @@ export default function Navbar({ className }: { className?: string }) {
       {
         <div
           ref={dropdownRef}
-          className={`absolute left-0 right-0 top-20 ${
+          className={`absolute left-0 right-0 top-15 ${
             dropdownOpen ? "scale-100" : "scale-0"
-          } transition-all duration-300 mt-2 mx-auto w-fit rounded-3xl bg-[#1D1D1D] bg-opacity-75 border-2 border-[#717174] backdrop-blur-sm shadow-input py-4 px-4 gap-3 z-50`}
+          } transition-all duration-300 mt-2 mx-auto w-fit rounded-2xl bg-[#1D1D1D] bg-opacity-75 border-2 border-[#717174] backdrop-blur-sm shadow-input py-5 px-4 gap-3 z-50`}
         >
           <ul className="font-sfPro font-extrabold text-white space-y-2">
             {menuItems

@@ -1,7 +1,12 @@
 import { cn } from "@/lib/utils";
-import { Clapperboard, Compass, Earth, HardHat, Home } from "lucide-react";
+import { Clapperboard, Copy, Earth, HardHat, Home } from "lucide-react";
+import { AiFillInstagram } from "react-icons/ai";
+
 import Link from "next/link";
 import React from "react";
+
+import Image from "next/image";
+import { FaTiktok, FaTwitter, FaYoutube } from "react-icons/fa";
 
 function Footer() {
   const menuItems = [
@@ -13,31 +18,26 @@ function Footer() {
       path: "/documentation",
       icon: <Clapperboard size={15} />,
     },
-    { name: "CS Corner", path: "/cs-corner", icon: <Compass size={15} /> },
   ];
 
   const socialItems = [
-    { title: "Our Social Media", path: "/", content: "@csui24_cosmos" },
-    { title: "Contact Us", path: "/", content: "csui24Sigma@cs.ui.ac.id" },
+    { path: "/", icon: <AiFillInstagram size={25} /> },
+    { path: "/", icon: <FaTwitter size={25} /> },
+    { path: "/", icon: <FaYoutube size={25} /> },
+    { path: "/", icon: <FaTiktok size={25} /> },
   ];
 
   return (
     <div
-      className="flex bg-center bg-cover w-full h-screen justify-around px-11 py-14 overflow-hidden items-end"
+      className="flex bg-center bg-cover w-full h-screen justify-around px-2 md:px-11 py-14 overflow-hidden items-center pt-[480px]"
       style={{
         backgroundImage: "url('footer.png')",
       }}
     >
-      <div className="logo">
-        <h1 className="text-white text-6xl font-monumentExt">
-          <span>
-            CS
-            <br />
-            UI 24
-          </span>
-        </h1>
+      <div className="logo pointer-events-none">
+        <Image src="/csfooter.png" alt="" width={150} height={150} />
       </div>
-      <div className="menu">
+      <div className="hidden md:flex">
         <ul className="flex flex-col gap-2  justify-around w-full text-white text-xs md:text-sm font-sfSemi font-medium">
           {menuItems.map((item) => (
             <li key={item.name}>
@@ -53,13 +53,31 @@ function Footer() {
           ))}
         </ul>
       </div>
-      <div className="flex w-96 justify-between py-10 text-white text-xs md:text-sm font-sfSemi ">
-        {socialItems.map((item) => (
-          <div>
-            <h1 className="font-bold">{item.title}</h1>
-            <Link href={item.path}>{item.content}</Link>
+      <div className="flex flex-col sm:flex-row justify-center items-end sm:items-center  gap-10">
+        <div className="flex flex-col gap-2 ">
+          <h1 className="text-white font-sfPro font-bold">Our Social Media</h1>
+          <ul className="flex gap-2  justify-around w-full text-white text-xs md:text-sm font-sfSemi font-medium">
+            {socialItems.map((item) => (
+              <li key={item.path}>
+                <Link
+                  href={item.path}
+                  className={cn(
+                    "opacity-100 hover:opacity-45 transition-opacity flex items-center space-x-2"
+                  )}
+                >
+                  {item.icon}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="text-white ">
+          <h1 className="font-sfPro font-bold">Contact Us</h1>
+          <div className="flex justify-center items-center gap-2">
+            <p className="font-sfSemi">csui24Sigma@cs.ui.ac.id</p>
+            <Copy size={15} />
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
