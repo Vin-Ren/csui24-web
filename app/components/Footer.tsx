@@ -21,23 +21,23 @@ function Footer() {
   ];
 
   const socialItems = [
-    { path: "/", icon: <AiFillInstagram size={25} /> },
-    { path: "/", icon: <FaTwitter size={25} /> },
-    { path: "/", icon: <FaYoutube size={25} /> },
-    { path: "/", icon: <FaTiktok size={25} /> },
+    { path: "/", icon: <AiFillInstagram size={20} /> },
+    { path: "/", icon: <FaTwitter size={20} /> },
+    { path: "/", icon: <FaYoutube size={20} /> },
+    { path: "/", icon: <FaTiktok size={20} /> },
   ];
 
   return (
     <div
-      className="flex bg-center bg-cover w-full h-screen justify-around px-2 md:px-11 py-14 overflow-hidden items-center pt-[480px]"
+      className="flex flex-row bg-center bg-cover w-full h-screen justify-around px-0 md:px-11 py-14 overflow-hidden items-center pt-[480px]"
       style={{
         backgroundImage: "url('footer.png')",
       }}
     >
-      <div className="logo pointer-events-none">
+      <div className="logo pointer-events-none max-w-24 sm:max-w-none">
         <Image src="/csfooter.png" alt="" width={150} height={150} />
       </div>
-      <div className="hidden md:flex">
+      <div className="hidden lg:flex">
         <ul className="flex flex-col gap-2  justify-around w-full text-white text-xs md:text-sm font-sfSemi font-medium">
           {menuItems.map((item) => (
             <li key={item.name}>
@@ -53,7 +53,7 @@ function Footer() {
           ))}
         </ul>
       </div>
-      <div className="flex flex-col sm:flex-row justify-center items-end sm:items-center  gap-10">
+      <div className="flex flex-col sm:flex-row justify-between items-end sm:items-center gap-10 text-xs sm:text-base">
         <div className="flex flex-col gap-2 ">
           <h1 className="text-white font-sfPro font-bold">Our Social Media</h1>
           <ul className="flex gap-2  justify-around w-full text-white text-xs md:text-sm font-sfSemi font-medium">
@@ -65,14 +65,14 @@ function Footer() {
                     "opacity-100 hover:opacity-45 transition-opacity flex items-center space-x-2"
                   )}
                 >
-                  {item.icon}
+                  <div className="text-xs">{item.icon}</div>
                 </Link>
               </li>
             ))}
           </ul>
         </div>
         <div className="text-white ">
-          <h1 className="font-sfPro font-bold">Contact Us</h1>
+          <h1 className="font-sfPro font-bold text-end">Contact Us</h1>
           <div className="flex justify-center items-center gap-2">
             <p className="font-sfSemi">csui24Sigma@cs.ui.ac.id</p>
             <Copy size={15} />
