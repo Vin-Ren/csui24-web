@@ -160,7 +160,7 @@ const SlideContent = ({
   );
 };
 
-const SlidingImageGrid = () => {
+const OurMoments = () => {
   // Function untuk sliding image
   const [position, setPosition] = useState(0);
   const [isSlidesHovered, setIsSlidesHovered] = useState(false);
@@ -274,4 +274,4 @@ const SlidingImageGrid = () => {
   );
 };
 
-export default SlidingImageGrid;
+export default OurMoments;

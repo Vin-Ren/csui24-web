@@ -1,12 +1,12 @@
 import React from "react";
 import LandingPageHero from "./sections/LandingPageHero";
-import SlidingImageGrid from "./sections/OurMemories";
+import OurMoments from "./sections/OurMoments";
 
 const LandingPage = () => {
   return (
     <div>
       <LandingPageHero />
-      <SlidingImageGrid />
+      <OurMoments />
     </div>
   );
 };
