@@ -16,6 +16,7 @@ const config: Config = {
         sfPro: ["var(--font-sfPro)", "sans-serif"],
         sfSemi: ["var(--font-sfSemi)", "sans-serif"],
         monumentExt: ["var(--font-monumentExt)", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
     },
   },
