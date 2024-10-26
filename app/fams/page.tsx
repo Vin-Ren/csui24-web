@@ -15,7 +15,7 @@ const Card = ({ entry }: { entry: FamsDataType }) => {
 
   return (
     <div
-      className="col-span-1 p-6 pt-9 w-[185px] h-[237px] bg-[#292929] rounded-[14px] shadow shadow-[#082F49] flex flex-col items-center gap-5 justify-evenly"
+      className="col-span-1 p-6 pt-9 w-[185px] h-[237px] bg-[#292929] rounded-[14px] shadow-sm shadow-[#082F49] flex flex-col items-center gap-5 justify-evenly"
       key={entry.id}
     >
       <Image
@@ -122,7 +122,7 @@ const SearchBar = ({ onChange }: { onChange: (searchCriteria: { name: string, ma
   }, [searchCriteria])
 
   return (
-    <div className="max-md:mt-4 md:mt-14 max-md:mb-14 md:mb-36 max-md:px-2 md:pl-6 md:pr-3 py-3 
+    <div className="max-md:px-2 md:pl-6 md:pr-3 py-3 
                   border border-[#D9D9D9] bg-white rounded-[40px] max-md:w-[290px] md:w-[420px] 
                   max-md:h-[35px] md:h-[50px] opacity-90 flex flex-row justify-stretch items-center max-xs:w-full
                   max-md:max-w-[290px]">
@@ -146,7 +146,9 @@ const page = () => {
     setFilteredFams(
       famsData.filter((e) => {
         var valid = true;
-        valid &&= !(searchCriteria?.name) || (e["full-name"].toLowerCase().startsWith(searchCriteria.name.toLowerCase()))
+        valid &&= !(searchCriteria?.name) 
+                  || (e["full-name"].toLowerCase().startsWith(searchCriteria.name.toLowerCase())) 
+                  || (e["nick-name"].toLowerCase().startsWith(searchCriteria.name.toLowerCase()))
         valid &&= !(searchCriteria?.major) || (e["major"] === searchCriteria.major)
         return valid;
       })
@@ -155,20 +157,20 @@ const page = () => {
 
   return (
     <div className="h-fit w-full bg-black">
-      <div className="flex flex-col h-fit w-full max-md:pt-14 md:pt-72 px-8 items-center">
-        <div className="flex flex-col items-center">
-          <h1 className="max-md:scale-0 md:scale-100 text-6xl text-white font-sfPro">
+      <div className="flex flex-col h-fit w-full max-md:pt-[160px] md:pt-[300px] px-8 items-center">
+        <div className="flex flex-col items-center max-md:mb-4 md:mb-[60px]">
+          <h1 className="max-md:hidden md:block text-6xl text-white font-sfPro">
             Check Out Our Friends!
           </h1>
-          <h1 className="max-md:scale-100 md:scale-0 text-xl text-white font-sfPro font-extrabold">
+          <h1 className="max-md:block md:hidden text-xl text-white font-sfPro font-extrabold">
             Check Out
           </h1>
-          <h1 className="max-md:scale-100 md:scale-0 text-3xl text-white font-sfPro font-extrabold">
+          <h1 className="max-md:block md:hidden text-3xl text-white font-sfPro font-extrabold">
             Our Friends!
           </h1>
         </div>
         <SearchBar onChange={setSearchCriteria} />
-        <div className="h-full grid max-md:grid-cols-2 max-md:gap-4 md:grid-cols-4 md:gap-x-10 md:gap-y-14">
+        <div className="h-full grid max-md:grid-cols-2 max-md:gap-4 md:grid-cols-4 md:gap-x-10 md:gap-y-14 max-md:mt-14 md:mt-36">
           {filteredFams.map((entry) => <Card entry={entry} />)}
         </div>
         {filteredFams.length > 0 || <h1 className="text-3xl font-sfPro text-white">There's no one here that meets your search criteria</h1>}
