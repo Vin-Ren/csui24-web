@@ -38,9 +38,9 @@ const StudentCounts = () => {
   }, []);
 
   return (
-    <section className="py-20" ref={ref}>
+    <section className="py-32" ref={ref}>
       <div className="container mx-auto text-center">
-        <h1 className="text-white text-[3.4rem]">CS Corner</h1>
+        <h1 className="text-white text-[2.8rem] font-semibold ">CS Corner</h1>
         <div className="py-28">
           <div className="flex justify-center pb-4">
             <StudentCard
@@ -73,7 +73,7 @@ const StudentCounts = () => {
           <div className="flex justify-center items-center pt-20">
             <Link
               href={"/fams"}
-              className="bg-[#D9D9D9] px-16 py-6 rounded-xl text-black text-2xl"
+              className="bg-[#D9D9D9] px-12 py-4 rounded-xl text-black text-lg font-bold"
             >
               See Detail
             </Link>
@@ -113,9 +113,9 @@ const StudentCard: React.FC<StudentCardProps> = ({
   }, [isVisible, value]);
 
   return (
-    <div className="pt-0 md:py-8 py-4">
-      <h3 className="text-5xl font-sfPro text-white">{count}</h3>
-      <p className="text-2xl font-medium mt-4 text-white">{label}</p>
+    <div className="pt-0 md:py-4 py-4">
+      <h3 className="text-4xl font-sfPro text-white">{count}</h3>
+      <p className="text-xl font-medium mt-2 text-white">{label}</p>
     </div>
   );
 };

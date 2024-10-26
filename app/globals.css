@@ -8,7 +8,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-sfSemi;
+  @apply font-sfPro;
 }
 
 ::-webkit-scrollbar {
@@ -37,6 +37,14 @@ h6 {
 }
 .bgGrad {
   background-image: url("../public/bg.png");
+  background-size: 100% 100%;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
+.bgGrad2 {
+  background-image: url("../public/bg2.png");
   background-size: 100% 100%;
   background-position: top center;
   background-repeat: no-repeat;
