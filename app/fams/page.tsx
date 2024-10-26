@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FamsDataType, Majors, famsData } from "@/modules/fams-data";
 import { ChevronDown, ChevronUp, PlusIcon, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 
 const Card = ({ entry }: { entry: FamsDataType }) => {
@@ -34,11 +35,11 @@ const Card = ({ entry }: { entry: FamsDataType }) => {
 };
 
 
-const MajorTag = ({ tagName, active = false, ...props }: { tagName: string, active?: boolean } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => {
+const MajorTag = ({ tagName, active = false, className, ...props }: { tagName: string, active?: boolean } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => {
   return (
-    <div className="bg-[#2D2929E5] rounded-2xl flex flex-row justify-between w-fit h-8 py-1 pr-2 pl-3" {...props}>
-      <p className="text-white max-md:text-sm">{tagName}</p>
-      <PlusIcon className={active ? 'rotate-45' : ''} />
+    <div className={cn("bg-[#2D2929E5] rounded-2xl flex flex-row justify-between w-fit max-md:h-6 md:h-8 py-0.5 pr-2 pl-3 gap-2 items-center", className)} {...props}>
+      <p className="text-white max-md:text-sm text-nowrap">{tagName}</p>
+      <PlusIcon className={`${active ? 'rotate-45' : ''} max-md:w-4`} color="white"/>
     </div>
   )
 }
@@ -53,9 +54,19 @@ const MajorSelectDropdown = ({ onChange }: { onChange: (major: Majors | '') => v
   }, [major])
 
   return (
-    <div className="flex items-center justify-center w-max h-max">
+    <div className="flex-auto flex justify-end max-w-fit max-md:w-fit">
       {majorTagName
-        ? <MajorTag tagName={majorTagName} active={true} onClick={() => { setMajor(''); setMajorTagName('') }} />
+        ? <div className="w-max h-max flex place-content-start">
+            <MajorTag 
+              tagName={majorTagName} 
+              active={true} 
+              onClick={() => {
+                setMajor('');
+                setMajorTagName(''); 
+              }}
+              className="flex-1"
+            />
+          </div>
         : <button onClick={() => setDropdownOpen((p) => !p)} className="relative bottom-3 right-6">
           <ChevronUp className={`${dropdownOpen ? `scale-0` : `scale-100`}  transition-all absolute p-auto max-md:w-[20px]`} />
           <ChevronDown className={`${dropdownOpen ? `scale-100` : `scale-0`} transition-all absolute p-auto max-md:w-[20px]`} />
@@ -64,7 +75,7 @@ const MajorSelectDropdown = ({ onChange }: { onChange: (major: Majors | '') => v
 
       <div className="relative">
         <div className={`${dropdownOpen ? 'scale-100' : 'scale-0'} transition-all absolute top-8 right-0 
-                        w-[190px] h-auto bg-[#F5F5F5] border-[#D9D9D9] rounded-2xl 
+                      bg-[#F5F5F5] border-[#D9D9D9] rounded-2xl 
                         flex flex-col items-end gap-3 p-3`}>
           <MajorTag
             tagName="Ilmu Komputer"
@@ -111,12 +122,13 @@ const SearchBar = ({ onChange }: { onChange: (searchCriteria: { name: string, ma
   }, [searchCriteria])
 
   return (
-    <div className="max-md:mt-4 md:mt-14 max-md:mb-14 md:mb-36 max-md:px-4 md:px-6 max-md:py-2 md:py-3 
+    <div className="max-md:mt-4 md:mt-14 max-md:mb-14 md:mb-36 max-md:px-2 md:pl-6 md:pr-3 py-3 
                   border border-[#D9D9D9] bg-white rounded-[40px] max-md:w-[290px] md:w-[420px] 
-                  max-md:h-[35px] md:h-[50px] opacity-90 flex flex-auto flex-row justify-between items-center max-xs:w-full">
+                  max-md:h-[35px] md:h-[50px] opacity-90 flex flex-row justify-stretch items-center max-xs:w-full
+                  max-md:max-w-[290px]">
       <input
         type="text"
-        className="bg-transparent outline-none max-md:text-xs font-sfPro font-light text-[#B3B3B3]"
+        className="flex-1 max-md:min-w-24 md:min-w-28 w-max bg-transparent outline-none max-md:text-xs font-sfPro font-light text-[#B3B3B3]"
         placeholder="Search by name"
         onChange={(e) => setSearchCriteria((p) => ({ major: p.major, name: e.target.value }))}
       />
