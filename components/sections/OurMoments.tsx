@@ -193,8 +193,8 @@ const OurMoments = () => {
   return (
     <>
       <div className="w-full mx-auto overflow-hidden p-4">
-        <h1 className="text-white font-sfPro text-center text-xl sm:text-2xl lg:text-4xl xl:text-6xl mb-4 sm:mb-10 lg:mb-15 xl:mb-20">
-          Our Moments
+        <h1 className="text-white font-sfPro text-center text-lg sm:text-xl lg:text-2xl xl:text-4xl mb-4 sm:mb-10 lg:mb-15 xl:mb-20 tracking-wide">
+          Our Memories
         </h1>
         <div
           onMouseEnter={() => setIsSlidesHovered(true)}

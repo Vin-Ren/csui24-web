@@ -1,3 +1,4 @@
+"use client";
 import { cn } from "@/lib/utils";
 import { Clapperboard, Copy, Earth, HardHat, Home } from "lucide-react";
 import { AiFillInstagram } from "react-icons/ai";
@@ -53,7 +54,7 @@ function Footer() {
           ))}
         </ul>
       </div>
-      <div className="flex flex-col sm:flex-row justify-between items-end sm:items-center gap-10 text-xs sm:text-base">
+      <div className="flex flex-col sm:flex-row justify-between items-end sm:items-center gap-10 lg:gap-32 text-xs sm:text-base">
         <div className="flex flex-col gap-2 ">
           <h1 className="text-white font-sfPro font-bold">Our Social Media</h1>
           <ul className="flex gap-2  justify-around w-full text-white text-xs md:text-sm font-sfSemi font-medium">
@@ -72,10 +73,16 @@ function Footer() {
           </ul>
         </div>
         <div className="text-white ">
-          <h1 className="font-sfPro font-bold text-end">Contact Us</h1>
+          <h1 className="font-sfPro font-bold text-start">Contact Us</h1>
           <div className="flex justify-center items-center gap-2">
             <p className="font-sfSemi">csui24Sigma@cs.ui.ac.id</p>
-            <Copy size={15} />
+            <Copy
+              onClick={() =>
+                navigator.clipboard.writeText("csui24Sigma@cs.ui.ac.id")
+              }
+              className="cursor-pointer hover:opacity-65"
+              size={15}
+            />
           </div>
         </div>
       </div>

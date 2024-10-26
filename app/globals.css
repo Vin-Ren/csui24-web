@@ -35,3 +35,10 @@ h6 {
   margin: 0;
   padding: 0;
 }
+.bgGrad {
+  background-image: url("../public/bg.png");
+  background-size: 100% 100%;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
