@@ -1,7 +1,7 @@
 import React from "react";
 import LandingPageHero from "./sections/LandingPageHero";
 import OurMoments from "./sections/OurMoments";
-import BannerHero from "./sections/BannerHero";
+import SwitchingCard from "./sections/SwitchingCard";
 import Quotes from "./sections/Quotes";
 
 const LandingPage = () => {
@@ -9,7 +9,7 @@ const LandingPage = () => {
     <div>
       <LandingPageHero />
       <Quotes />
-      <BannerHero />
+      <SwitchingCard />
       <OurMoments />
     </div>
   );
