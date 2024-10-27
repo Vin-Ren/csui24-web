@@ -50,3 +50,13 @@ h6 {
   background-repeat: no-repeat;
   background-attachment: scroll;
 }
+.customBanner{
+  background-image: url("../public/customBanner.png");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+.customShadow{
+  box-shadow: -1.78px -1.78px 5.339px 0px #082F49, 1.78px 1.78px 5.339px 0px rgba(48, 62, 71, 0.50);
+}
