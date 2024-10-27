@@ -2,13 +2,8 @@ import { ChevronDown, ChevronUp } from "lucide-react"
 import { MajorTag } from "./MajorTag"
 import { useEffect, useState } from "react"
 import { OptionalMajors } from "@/modules/fams-data"
-import { OptionalMajorTagNames } from "./types"
+import { MajorOption, OptionalMajorTagNames } from "./types"
 
-
-type MajorOption = {
-  major: OptionalMajors,
-  tagName: OptionalMajorTagNames,
-}
 
 const majors: MajorOption[] = [
   { major: 'Ilmu Komputer Reguler', tagName: "Ilmu Komputer" },

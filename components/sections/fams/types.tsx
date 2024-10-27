@@ -7,6 +7,11 @@ export interface SearchCriteria {
 
 export type OptionalMajorTagNames = "Ilmu Komputer" | "Sistem Informasi" | "KKI" | ""
 
+export type MajorOption = {
+  major: OptionalMajors,
+  tagName: OptionalMajorTagNames,
+}
+
 export type CardProps = {
   entry: BriefFamsDataType,
   className?: string
