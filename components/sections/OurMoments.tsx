@@ -193,7 +193,7 @@ const OurMoments = () => {
   return (
     <>
       <div className="w-full mx-auto overflow-hidden p-4">
-        <h1 className="text-white font-sfPro text-center text-lg sm:text-xl lg:text-2xl xl:text-4xl mb-4 sm:mb-10 lg:mb-15 xl:mb-20 tracking-wide">
+        <h1 className="text-white font-sfReg text-center text-lg sm:text-xl lg:text-2xl xl:text-4xl mb-4 sm:mb-10 lg:mb-15 xl:mb-20 tracking-wide">
           Our Memories
         </h1>
         <div

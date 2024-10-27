@@ -1,32 +1,30 @@
-"use client"
+"use client";
 import React, { useMemo, useState } from "react";
 import { briefFamsData } from "@/modules/fams-data";
 import { Card } from "@/components/sections/fams/Card";
 import { SearchCriteria } from "@/components/sections/fams/types";
 import { SearchBar } from "@/components/sections/fams/SearchBar";
 
-
 const page = () => {
-  const [searchCriteria, setSearchCriteria] = useState<SearchCriteria>()
+  const [searchCriteria, setSearchCriteria] = useState<SearchCriteria>();
   const filteredFams = useMemo(() => {
-    return briefFamsData.filter((entry) =>
-      ((!(searchCriteria?.major) || (entry["major"] === searchCriteria.major)))
-      && (!(searchCriteria?.name) || 
-        !(searchCriteria.name
-          .toLowerCase()
-          .split(' ')
-          .map((e)=> 
-            entry["full-name"]
+    return briefFamsData.filter(
+      (entry) =>
+        (!searchCriteria?.major || entry["major"] === searchCriteria.major) &&
+        (!searchCriteria?.name ||
+          !searchCriteria.name
             .toLowerCase()
-            .split(' ')
-            .map((word)=>
-              word.startsWith(e)
+            .split(" ")
+            .map((e) =>
+              entry["full-name"]
+                .toLowerCase()
+                .split(" ")
+                .map((word) => word.startsWith(e))
+                .includes(true)
             )
-            .includes(true)
-          )
-        ).includes(false))
-    )
-  }, [searchCriteria])
+            .includes(false))
+    );
+  }, [searchCriteria]);
 
   return (
     <div className="h-fit w-full bgGrad2">
@@ -44,9 +42,15 @@ const page = () => {
         </div>
         <SearchBar onChange={setSearchCriteria} />
         <div className="h-full grid max-[350px]:grid-cols-1 max-sm:grid-cols-2 sm:max-lg:grid-cols-3 lg:grid-cols-4 max-sm:gap-4 sm:gap-x-10 sm:gap-y-14 max-md:mt-14 md:mt-36">
-          {filteredFams.map((entry) => <Card entry={entry} key={entry.id} />)}
+          {filteredFams.map((entry) => (
+            <Card entry={entry} key={entry.id} />
+          ))}
         </div>
-        {filteredFams.length || <h1 className="text-3xl font-sfPro text-white">No results found for your search criteria</h1>}
+        {filteredFams.length || (
+          <h1 className="text-3xl font-sfPro text-white">
+            No results found for your search criteria
+          </h1>
+        )}
       </div>
     </div>
   );

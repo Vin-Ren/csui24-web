@@ -31,7 +31,7 @@ const DocumentationCarousel = ({
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 lg:mb-8">
           {album.title}
         </h1>
-        <p className="text-lg md:text-xl lg:text-2xl font-sfPro font-normal text-center">
+        <p className="text-lg md:text-xl lg:text-2xl font-sfReg font-normal text-center">
           {album.description}
         </p>
       </div>

@@ -12,9 +12,9 @@ const sfPro = localFont({
   src: "./fonts/SF-Pro-Text-Bold.otf",
   variable: "--font-sfPro",
 });
-const sfSemi = localFont({
-  src: "./fonts/SF-Pro-Text-Semibold.otf",
-  variable: "--font-sfPro",
+const sfReg = localFont({
+  src: "./fonts/SF-Pro-Text-Regular.otf",
+  variable: "--font-sfReg",
 });
 const monumentExt = localFont({
   src: "./fonts/Monument-Extended.otf",
@@ -27,7 +27,7 @@ const UncialAntiqua = localFont({
 const PalanquinDark = localFont({
   src: "./fonts/PalanquinDark-Regular.ttf",
   variable: "--font-PalanquinDark",
-})
+});
 
 export const metadata: Metadata = {
   title: "CSUI 24",
@@ -42,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${monumentExt.variable} ${sfPro.variable}  ${sfSemi.variable} ${UncialAntiqua.variable} ${PalanquinDark.variable}`}
+        className={`${monumentExt.variable} ${sfPro.variable}  ${sfReg.variable} ${UncialAntiqua.variable} ${PalanquinDark.variable}`}
       >
         <Navbar />
         <main className="overflow-hidden">{children}</main>

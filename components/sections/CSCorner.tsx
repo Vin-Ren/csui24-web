@@ -40,7 +40,7 @@ const StudentCounts = () => {
   return (
     <section className="py-32" ref={ref}>
       <div className="container mx-auto text-center">
-        <h1 className="text-white text-[2.8rem] font-semibold ">CS Corner</h1>
+        <h1 className="text-white text-[2.8rem] font-sfReg ">CS Corner</h1>
         <div className="py-28">
           <div className="flex justify-center pb-4">
             <StudentCard
@@ -51,7 +51,7 @@ const StudentCounts = () => {
             />
           </div>
           <div className="flex justify-center flex-col">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:pt-12 pt-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:pt-12 pt-4 font-sfReg">
               {studentCounts.map((studentCount) => (
                 <div
                   key={studentCount.id}
@@ -73,7 +73,7 @@ const StudentCounts = () => {
           <div className="flex justify-center items-center pt-20">
             <Link
               href={"/fams"}
-              className="bg-[#D9D9D9] px-12 py-4 rounded-xl text-black text-lg font-bold"
+              className="bg-[#D9D9D9] px-12 py-4 rounded-xl text-black text-lg font-SfReg font-medium"
             >
               See Detail
             </Link>
