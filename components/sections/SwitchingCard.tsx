@@ -65,7 +65,7 @@ const SwitchingCard = () => {
                     ? "max-w-[500px]"
                     : activeCard === index
                       ? "max-w-[740px]"
-                      : "max-w-[300px]"
+                      : "max-w-[260px]"
               } ${(isSmallScreen || isMediumScreen) && index === 1 ? "self-end" : ""}`}
             >
               <div
