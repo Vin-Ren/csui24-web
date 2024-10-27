@@ -11,7 +11,20 @@ const page = () => {
   const filteredFams = useMemo(() => {
     return briefFamsData.filter((entry) =>
       ((!(searchCriteria?.major) || (entry["major"] === searchCriteria.major)))
-      && (!(searchCriteria?.name) || (entry["full-name"].toLowerCase().startsWith(searchCriteria.name.toLowerCase())))
+      && (!(searchCriteria?.name) || 
+        !(searchCriteria.name
+          .toLowerCase()
+          .split(' ')
+          .map((e)=> 
+            entry["full-name"]
+            .toLowerCase()
+            .split(' ')
+            .map((word)=>
+              word.startsWith(e)
+            )
+            .includes(true)
+          )
+        ).includes(false))
     )
   }, [searchCriteria])
 
@@ -30,7 +43,7 @@ const page = () => {
           </h2>
         </div>
         <SearchBar onChange={setSearchCriteria} />
-        <div className="h-full grid max-sm:grid-cols-2 sm:max-lg:grid-cols-3 lg:grid-cols-4 max-sm:gap-4 sm:gap-x-10 sm:gap-y-14 max-md:mt-14 md:mt-36">
+        <div className="h-full grid max-[350px]:grid-cols-1 max-sm:grid-cols-2 sm:max-lg:grid-cols-3 lg:grid-cols-4 max-sm:gap-4 sm:gap-x-10 sm:gap-y-14 max-md:mt-14 md:mt-36">
           {filteredFams.map((entry) => <Card entry={entry} key={entry.id} />)}
         </div>
         {filteredFams.length || <h1 className="text-3xl font-sfPro text-white">No results found for your search criteria</h1>}
