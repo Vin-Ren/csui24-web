@@ -3,6 +3,7 @@ import { Albums, AlbumsType } from "../constant";
 import Image from "next/image";
 import { useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const DocumentationCarousel = ({
   album,
@@ -41,13 +42,13 @@ const DocumentationCarousel = ({
             className="absolute left-4 top-1/2 -translate-y-1/2 text-3xl text-white"
             onClick={scrollPrev}
           >
-            {"◀"}
+            <ChevronLeft />
           </button>
           <button
             className="absolute right-4 top-1/2 -translate-y-1/2 text-3xl text-white"
             onClick={scrollNext}
           >
-            {"▶"}
+            <ChevronRight />
           </button>
           <div className="w-full aspect-[5/4] bg-white p-[2%] pb-[10%]">
             <div className="size-full overflow-hidden" ref={carouselRef}>
