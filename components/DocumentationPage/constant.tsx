@@ -4,11 +4,11 @@ export const Albums = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscingelit. Aenean ut turpis sed dui rutrum facilisis. Sed eget consequat magna.",
     imageList: [
-      "contoh-gambar.png",
-      "contoh-gambar.png",
-      "contoh-gambar.png",
-      "contoh-gambar.png",
-      "contoh-gambar.png",
+      "documentation/contoh-gambar.png",
+      "documentation/contoh-gambar.png",
+      "documentation/contoh-gambar.png",
+      "documentation/contoh-gambar.png",
+      "documentation/contoh-gambar.png",
     ],
   },
   {
@@ -16,11 +16,11 @@ export const Albums = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscingelit. Aenean ut turpis sed dui rutrum facilisis. Sed eget consequat magna.",
     imageList: [
-      "contoh-gambar.png",
-      "contoh-gambar.png",
-      "contoh-gambar.png",
-      "contoh-gambar.png",
-      "contoh-gambar.png",
+      "documentation/contoh-gambar.png",
+      "documentation/contoh-gambar.png",
+      "documentation/contoh-gambar.png",
+      "documentation/contoh-gambar.png",
+      "documentation/contoh-gambar.png",
     ],
   },
 ];
