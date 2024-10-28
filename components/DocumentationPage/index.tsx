@@ -3,7 +3,7 @@ import DocumentationHero from "./sections/DocumentationHero";
 
 const DocumentationPage = () => {
   return (
-    <div className="bgGrad2 py-48 lg:py-24">
+    <div className="bgGrad py-48 lg:py-24">
       <DocumentationHero />
       <DocumentationAlbum />
     </div>

@@ -35,21 +35,48 @@ h6 {
   margin: 0;
   padding: 0;
 }
+
 .bgGrad {
-  background-image: url("../public/bg.png");
-  background-size: 100% 100%;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
+  position: relative;
+  background-color: black;
+  background-image: radial-gradient(
+      circle at 90% 28%,
+      rgb(72, 31, 31, 0.7),
+      transparent 30%
+    ),
+    radial-gradient(circle at 20% 40%, rgb(72, 31, 31, 0.7), transparent 40%),
+    radial-gradient(circle at 90% 60%, rgb(32, 28, 92, 0.7), transparent 30%),
+    radial-gradient(circle at 20% 75%, rgb(32, 28, 92, 0.7), transparent 28%);
+  background-repeat: repeat;
+  background-size: 100% 300vh;
+  background-blend-mode: screen;
+  overflow: hidden;
+  min-height: 100vh;
+  padding: 200px 0;
+}
+/* 
+top */
+.bgGrad::before,
+.bgGrad::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, black, transparent);
+  z-index: 1;
 }
 
-.bgGrad2 {
-  background-image: url("../public/bg2.png");
-  background-size: 100% 100%;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
+.bgGrad::before {
+  top: 0;
 }
+
+/* bottom */
+.bgGrad::after {
+  bottom: 0;
+  background: linear-gradient(to top, black, transparent);
+}
+
 .customBanner {
   background-image: url("../public/customBanner.png");
   background-size: cover;

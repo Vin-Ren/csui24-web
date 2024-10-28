@@ -27,7 +27,7 @@ const page = () => {
   }, [searchCriteria]);
 
   return (
-    <div className="h-fit w-full bgGrad2">
+    <div className="h-fit w-full bgGrad">
       <div className="flex flex-col h-fit w-full max-md:pt-[160px] md:pt-[300px] px-8 items-center">
         <div className="flex flex-col items-center max-md:mb-4 md:mb-[60px]">
           <h1 className="max-md:hidden md:block text-6xl font-sfPro text-white">
