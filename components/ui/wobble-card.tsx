@@ -26,8 +26,8 @@ export const WobbleCard = ({
   return (
     <motion.section
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => {
+      onMouseOver={() => setIsHovering(true)}
+      onMouseOut={() => {
         setIsHovering(false);
         setMousePosition({ x: 0, y: 0 });
       }}
