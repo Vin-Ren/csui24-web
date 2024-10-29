@@ -29,12 +29,7 @@ function Footer() {
   ];
 
   return (
-    <div
-      className="flex flex-row bg-center bg-cover w-full h-screen justify-around px-0 md:px-11 py-14 overflow-hidden items-center pt-[480px]"
-      style={{
-        backgroundImage: "url('footer.png')",
-      }}
-    >
+    <div className="flex flex-row w-full h-screen justify-around bgFoot px-0 md:px-11 py-14 overflow-hidden items-center pt-[480px]">
       <div className="logo pointer-events-none max-w-24 sm:max-w-none">
         <Image src="/csfooter.png" alt="" width={150} height={150} />
       </div>
