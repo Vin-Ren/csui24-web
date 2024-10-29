@@ -25,7 +25,7 @@ export default function Navbar({ className }: { className?: string }) {
     },
   ];
 
-  const isActive = (path: string) => pathname === path;
+  const isActive = (path: string) => `/${pathname.split("/")[1]}` === path;
 
   // active item
   const activeItem =
