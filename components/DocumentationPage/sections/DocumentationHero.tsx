@@ -9,6 +9,7 @@ const DocumentationHero = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         aspectRatio: "16 / 9",
+        zIndex: 2,
       }}
     >
       <div className="flex flex-col gap-2 justify-center items-center mt-[17vw] lg:mt-[20vw] w-[40vw]">
