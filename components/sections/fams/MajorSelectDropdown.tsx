@@ -49,8 +49,9 @@ export const MajorSelectDropdown = ({
         <div className={`${dropdownOpen ? 'scale-100' : 'scale-0'} transition-all absolute top-8 right-0 
                         bg-[#F5F5F5] border-[#D9D9D9] rounded-2xl 
                           flex flex-col items-end gap-3 p-3`}>
-          {majors.map((e) => (
+          {majors.map((e, index) => (
             <MajorTag
+              key={index}
               tagName={e.tagName}
               onClick={() => {
                 setMajor(e.major);
