@@ -54,7 +54,7 @@ const ProfilePage = ({
           <div className="flex-[1.2] sm:flex-[1] max-w-[24rem]">
             <div className="relative w-full aspect-square rounded-full overflow-hidden">
               <Image
-                src="/contoh-gambar.png"
+                src={`/${person['image-filename']}`}
                 alt={`foto profil ${person["nick-name"]}`}
                 fill
                 className="object-cover"
