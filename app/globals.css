@@ -48,7 +48,7 @@ h6 {
     radial-gradient(circle at 90% 60%, rgb(32, 28, 92, 0.7), transparent 30%),
     radial-gradient(circle at 20% 75%, rgb(72, 31, 31, 0.7), transparent 28%);
   background-repeat: repeat;
-  background-size: 100% 300vh;
+  background-size: 100% 200vh;
   background-blend-mode: screen;
   overflow: hidden;
   min-height: 100vh;

@@ -10,7 +10,13 @@ const LandingPageHero = () => {
       }}
     >
       <div className="max-w-60 sm:max-w-96 lg:max-w-none pointer-events-none">
-        <Image src="/csui.png" alt="CS UI 24" width={600} height={600} />
+        <Image
+          src="/csui.png"
+          alt="CS UI 24"
+          width={600}
+          height={600}
+          priority
+        />
       </div>
 
       <div className="hidden sm:flex">

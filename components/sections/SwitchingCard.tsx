@@ -45,14 +45,14 @@ const SwitchingCard = () => {
   return (
     <div className="flex flex-col gap-8 py-36">
       <div className="flex justify-center">
-        <div className="text-white font-sfReg text-center text-xl sm:text-2xl lg:text-4xl xl:text-5xl ">
+        <div className="text-white font-sfReg text-center text-lg sm:text-4xl mb-12 ">
           Messages from Class Leader
         </div>
       </div>
 
       <div className="w-full flex justify-center">
         <div
-          className={`w-[95%] flex gap-7 ${isMediumScreen || isSmallScreen ? "flex-col" : "justify-center"}`}
+          className={`w-[80%] sm:w-[90%] flex gap-7 ${isMediumScreen || isSmallScreen ? "flex-col" : "justify-center"}`}
         >
           {Leader.map((leader, index) => (
             <div
@@ -101,7 +101,7 @@ const SwitchingCard = () => {
                       isSmallScreen || isMediumScreen || activeCard === index
                         ? "duration-[2000ms] opacity-100"
                         : "duration-75 opacity-0"
-                    }`}
+                    } `}
                   >
                     {leader.message}
                     <br /> <br />{" "}

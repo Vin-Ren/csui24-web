@@ -40,7 +40,7 @@ const StudentCounts = () => {
   return (
     <section className="py-32" ref={ref}>
       <div className="container mx-auto text-center">
-        <h1 className="text-white text-[2.8rem] font-sfReg ">CS Corner</h1>
+        <h1 className="text-white text-4xl font-sfReg ">CS Corner</h1>
         <div className="py-28">
           <div className="flex justify-center pb-4">
             <StudentCard
@@ -73,7 +73,7 @@ const StudentCounts = () => {
           <div className="flex justify-center items-center pt-20">
             <Link
               href={"/fams"}
-              className="bg-[#D9D9D9] px-12 py-4 rounded-xl text-black text-lg font-SfReg font-medium"
+              className="bg-[#D9D9D9] px-12 py-4 rounded-xl text-black text-lg font-SfReg font-medium transition-all duration-500 hover:opacity-60"
             >
               See Detail
             </Link>
