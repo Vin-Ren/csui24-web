@@ -5,7 +5,7 @@ import { Card } from "@/components/sections/fams/Card";
 import { SearchCriteria } from "@/components/sections/fams/types";
 import { SearchBar } from "@/components/sections/fams/SearchBar";
 
-const page = () => {
+const Page = () => {
   const [searchCriteria, setSearchCriteria] = useState<SearchCriteria>();
   const filteredFams = useMemo(() => {
     return briefFamsData.filter(
@@ -56,4 +56,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
