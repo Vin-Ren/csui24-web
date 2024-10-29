@@ -44,7 +44,7 @@ const ImagePopup: React.FC<ImagePopupProps> = ({
   selectedImage,
   setSelectedImage,
 }) => {
-  const [isShowing, setIsShowing] = React.useState(false);
+  const [isShowing, setIsShowing] = useState(false);
 
   useEffect(() => {
     if (selectedImage) {
@@ -164,16 +164,13 @@ const OurMoments = () => {
   // Function untuk sliding image
   const [position, setPosition] = useState(0);
   const [isSlidesHovered, setIsSlidesHovered] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<{
-    url: string;
-    text: string;
-  } | null>(null);
+  const [selectedImage, setSelectedImage] = useState<ImageData | null>(null);
 
   const duplicatedSlides = [...slides, ...slides];
 
   useEffect(() => {
     const animate = () => {
-      if (!isSlidesHovered) {
+      if (!isSlidesHovered && !selectedImage) {
         setPosition((prev) => {
           const totalSlideWidth = 70 + 1.5; // 70vw width + 1.5vs gap
           const totalWidth = slides.length * totalSlideWidth;
@@ -188,17 +185,17 @@ const OurMoments = () => {
 
     const animationFrame = setInterval(animate, 16);
     return () => clearInterval(animationFrame);
-  }, [isSlidesHovered]);
+  }, [isSlidesHovered, selectedImage]);
 
   return (
     <>
-      <div className="w-full mx-auto overflow-hidden p-4">
+      <div className="w-full mx-auto overflow-hidden py-4 md:py-10">
         <h1 className="text-white font-sfReg text-center text-lg sm:text-xl lg:text-2xl xl:text-4xl mb-4 sm:mb-10 lg:mb-15 xl:mb-20 tracking-wide">
           Our Memories
         </h1>
         <div
-          onMouseEnter={() => setIsSlidesHovered(true)}
-          onMouseLeave={() => setIsSlidesHovered(false)}
+          onMouseOver={() => setIsSlidesHovered(true)}
+          onMouseOut={() => setIsSlidesHovered(false)}
         >
           <div
             className={`grid grid-flow-col auto-cols-max gap-[1.5vw]`}
