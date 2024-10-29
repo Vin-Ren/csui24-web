@@ -1,23 +1,44 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { MajorSelectDropdown } from "./MajorSelectDropdown";
 import { SearchCriteria } from "./types";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export const SearchBar = ({
   onChange,
 }: {
   onChange: (searchCriteria: SearchCriteria) => void;
 }) => {
-  const [searchCriteria, setSearchCriteria] = useState<SearchCriteria>({
-    name: "",
-    major: "",
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  
+  const [searchCriteria, setSearchCriteria] = useState<SearchCriteria>(() => {
+    return ({
+      name: (searchParams.get('qname') || "") as SearchCriteria['name'],
+      major: (searchParams.get('qmajor') || "") as SearchCriteria['major'],
+    })
   });
+
+  const createQueryString = useCallback(() => {
+      const params = new URLSearchParams(searchParams.toString())
+      params.set('qname', searchCriteria.name)
+      params.set('qmajor', searchCriteria.major)
+      return params.toString()
+  }, [searchCriteria])
+
 
   useEffect(() => {
     if (!searchCriteria.name) {
+      createQueryString();
       onChange(searchCriteria);
+      router.push(`${pathname}?${createQueryString()}`)
       return;
     }
-    const timeOutId = setTimeout(() => onChange(searchCriteria), 250);
+    const timeOutId = setTimeout(() => {
+      onChange(searchCriteria);
+      router.push(`${pathname}?${createQueryString()}`);
+    }, 250);
     return () => clearTimeout(timeOutId);
   }, [searchCriteria]);
 
@@ -33,8 +54,12 @@ export const SearchBar = ({
         className="flex-1 max-md:min-w-24 md:min-w-28 w-max bg-transparent outline-none max-md:text-xs font-sfReg text-[#B3B3B3]"
         placeholder="Search by name"
         onChange={(e) =>
-          setSearchCriteria((p) => ({ major: p.major, name: e.target.value }))
+          setSearchCriteria((p) => ({ 
+            major: p.major, 
+            name: e.target.value
+          }))
         }
+        value={searchCriteria.name}
       />
       <MajorSelectDropdown
         onChange={(major) => setSearchCriteria((p) => ({ ...p, major }))}
