@@ -1,6 +1,7 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { blurhashToDataUrl, cn } from "@/lib/utils";
 import { CardProps } from "./types";
 
 export const Card = ({ entry, className = "" }: CardProps) => {
@@ -18,6 +19,8 @@ export const Card = ({ entry, className = "" }: CardProps) => {
         width={100}
         height={100}
         className={`rounded-full max-sm:w-[77px] max-sm:h-[77px]`}
+        blurDataURL={blurhashToDataUrl(entry['blurhash'])}
+        placeholder="blur"
       />
       <div className="flex flex-row items-center justify-center">
         <p className="flex-1 text-white font-sfSemi text-center max-sm:text-xs">
