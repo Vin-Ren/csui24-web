@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState } from "react";
+import React, { Suspense, useMemo, useState } from "react";
 import { briefFamsData } from "@/modules/fams-data";
 import { Card } from "./components/Card";
 import { SearchCriteria } from "./components/types";
@@ -27,6 +27,7 @@ const FamsPage = () => {
   }, [searchCriteria]);
 
   return (
+    <Suspense>
       <div className="flex flex-col h-fit w-full max-md:pt-[160px] md:pt-[300px] px-8 items-center">
         <div className="flex flex-col items-center max-md:mb-4 md:mb-[60px]">
           <h1 className="max-md:hidden md:block text-6xl font-sfPro text-white">
@@ -51,6 +52,7 @@ const FamsPage = () => {
           </h1>
         )}
       </div>
+    </Suspense>
   );
 };
 

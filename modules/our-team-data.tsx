@@ -1,4 +1,26 @@
-const ourTeam = [
+
+
+type TeamMember = {
+  link: string,
+  nickname: string,
+  fontNickname: [string,string],
+  fullname: string,
+  Divisi: string,
+  fontDivisi: [string,string],
+  image: string,
+  image2:string
+}
+
+
+type Team = {
+  Team: string,
+  member: TeamMember[]
+}
+
+type Teams = Team[]
+
+
+const ourTeam: Teams = [
     {
       Team: "Core Team",
       member: [
