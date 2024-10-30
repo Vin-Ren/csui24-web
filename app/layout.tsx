@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import CustomFont from "next/font/local";
-
-import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-const poppins = Poppins({ weight: ["400", "600"], subsets: ["latin"] });
 const sfPro = localFont({
   src: "./fonts/SF-Pro-Text-Bold.otf",
   variable: "--font-sfPro",

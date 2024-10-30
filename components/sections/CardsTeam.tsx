@@ -3,8 +3,19 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
+interface CardsTeamProps {
+    link: string;
+    nickname: string;
+    fullname: string;
+    Divisi: string;
+    image: string;
+    image2: string;
+    fontNickname: [string, string];
+    fontDivisi: [string, string];  
+}
 
-const CardsTeam = (props: any) => {
+
+const CardsTeam = (props: CardsTeamProps) => {  
     const [isSmallScreen, setIsSmallScreen] = useState(false);
 
     useEffect(() => {
