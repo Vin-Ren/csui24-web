@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { ScrollArea } from "../ui/scroll-area";
 
 const Leader = [
   // gambar harus 1:1 dan gambar jangan yang terlalu kontras dengan item (pilih tone gelap), atau lebih baik gambarnya di edit filter biru dlu
@@ -45,7 +46,7 @@ const SwitchingCard = () => {
     <div className="flex flex-col gap-8 py-36">
       <div className="flex justify-center">
         <div className="text-white font-sfReg text-center text-lg sm:text-4xl mb-12 ">
-          Messages from Class Leader
+          Messages
         </div>
       </div>
 
@@ -57,7 +58,7 @@ const SwitchingCard = () => {
             <div
               key={index}
               onClick={() => handleClick(index)}
-              className={`${isMediumScreen || isSmallScreen ? "" : "cursor-pointer"} rounded-[40px] p-[2px] bg-gradient-to-br from-gray-200 via-gray-400 to-gray-600 transition-all duration-500 ease-in-out overflow-hidden ${
+              className={`${isMediumScreen || isSmallScreen ? "" : "cursor-pointer"} rounded-[35px] p-[2px] bg-gradient-to-br from-gray-200 via-gray-400 to-gray-600 transition-all duration-500 ease-in-out overflow-hidden ${
                 isSmallScreen
                   ? "max-w-[350px]"
                   : isMediumScreen
@@ -95,8 +96,8 @@ const SwitchingCard = () => {
                       : "opacity-0 w-0"
                   }  `}
                 >
-                  <p
-                    className={`transition-opacity font-sfReg ${
+                  <ScrollArea
+                    className={`transition-opacity font-sfReg py-2 px-3 md:h-[300px] max-md:h-[150px] ${
                       isSmallScreen || isMediumScreen || activeCard === index
                         ? "duration-[2000ms] opacity-100"
                         : "duration-75 opacity-0"
@@ -105,7 +106,7 @@ const SwitchingCard = () => {
                     {leader.message}
                     <br /> <br />{" "}
                     <span className="font-sfReg font-[650]">{leader.name}</span>
-                  </p>
+                  </ScrollArea>
                 </div>
               </div>
             </div>

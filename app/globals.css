@@ -120,3 +120,8 @@ top */
     -1.78px -1.78px 5.339px 0px #082f49,
     1.78px 1.78px 5.339px 0px rgba(48, 62, 71, 0.5);
 }
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
