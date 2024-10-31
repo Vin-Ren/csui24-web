@@ -40,13 +40,13 @@ h6 {
   position: relative;
   background-color: black;
   background-image: radial-gradient(
-      circle at 90% 28%,
+      circle at 90% 30%,
       rgb(72, 31, 31, 0.7),
-      transparent 30%
+      transparent 25%
     ),
     radial-gradient(circle at 20% 40%, rgb(32, 28, 92, 0.7), transparent 40%),
     radial-gradient(circle at 90% 60%, rgb(32, 28, 92, 0.7), transparent 30%),
-    radial-gradient(circle at 20% 75%, rgb(72, 31, 31, 0.7), transparent 28%);
+    radial-gradient(circle at 20% 70%, rgb(72, 31, 31, 0.7), transparent 28%);
   background-repeat: repeat;
   background-size: 100% 200vh;
   background-blend-mode: screen;
