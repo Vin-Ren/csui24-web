@@ -8,15 +8,14 @@ const Leader = [
   // Name optimal di maksimal 40 karakter
   {
     image: "/leader/leader1.jpg",
-    name: "Doain saya jadi presiden 2029 anjay gg g",
+    name: "Ketua PMB 2024 - Adrasa Cantya Salaka",
     message:
-      "Kamu tau ga sih apa bedanya kamu sama matahari? Gaada bedanya sama sama cantik soalnya. Kamu tahu nggak, aku seperti mentega, dan kamu seperti wajan panas. Soalnya pas lihat muka kamu, aku jadi meleleh. Sayangku tadi pagi aku gak bisa makan karena merindukanmu. anjay gg gaming gacor king waw sangat keren sekali damn huehehhh hahahhah",
-  },
+      "Halo, Cosmic. Welcome to Fasilkom UI! Selamat karena kalian telah secara resmi bergabung di keluarga besar Fakultas Ilmu Komputer Universitas Indonesia. Kami selaku panitia PMB 2024 mengucapkan terima kasih sebanyak-banyaknya atas kerjasama kalian selama rangkaian kegiatan PMB 2024, sehingga pada akhirnya kalian berhasil menjadi sebuah angkatan yang utuh. Ke depannya, terus jadikan angkatan kalian sebagai rumah kalian, saling dukung dan saling membantu hingga garis akhir. Gunakan privilese kalian sebagai mahasiswa/i Fasilkom UI dengan sebaik-baiknya. Gali ilmu sebanyak-banyaknya dari orang-orang di sekitar kalian (baik dosen, elemen, kakak tingkat, atau bahkan teman sebaya), cari pengalaman baru dengan mengikuti organisasi atau kepanitiaan yang sesuai, dan juga perluas koneksi kalian. Semangat terus untuk segala hal di depan! Greater and bigger things are ahead of you!"       },
   {
     image: "/leader/leader2.png",
-    name: "Wakil Presiden Republik Indonesia",
+    name: "Koor Angkatan 24",
     message:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "Selamat atas pencapaian kalian hingga saat ini! Di tengah tantangan dan perjalanan panjang yang telah kalian lalui bersama, ingatlah bahwa kalian adalah angkatan yang luar biasa—berkumpul dari latar belakang dan pengalaman yang beragam namun dipersatukan oleh tujuan dan semangat yang sama. Ingatlah bahwa perjalanan ini bukan hanya tentang meraih prestasi akademik, tetapi juga tentang membentuk diri, membangun jejaring yang kuat, dan saling mendukung dalam mencapai mimpi. Tetaplah rendah hati, terbuka untuk belajar dari pengalaman, dan jangan pernah berhenti mengejar potensi terbaik diri kalian. Jadikan masa-masa ini kenangan berharga yang selalu bisa kalian lihat kembali dengan senyum. Apa pun jalan yang kalian ambil setelah ini, ingatlah bahwa kalian tidak pernah berjalan sendiri—ada dukungan dari teman, mentor, dan semua orang yang percaya pada kalian. Selamat melangkah ke masa depan yang cerah. Teruslah menjadi versi terbaik dari diri kalian. Angkatan 24, kalian luar biasa!",
   },
 ];
 
@@ -79,7 +78,7 @@ const SwitchingCard = () => {
                   isSmallScreen || isMediumScreen || activeCard === index
                     ? "gap-6"
                     : "gap-0"
-                }`}
+                } `}
               >
                 <Image
                   src={leader.image}
@@ -94,7 +93,7 @@ const SwitchingCard = () => {
                     isSmallScreen || isMediumScreen || activeCard === index
                       ? "opacity-100 w-[80%] max-md:w-[60%] max-sm:w-[70%]"
                       : "opacity-0 w-0"
-                  }`}
+                  }  `}
                 >
                   <p
                     className={`transition-opacity font-sfReg ${

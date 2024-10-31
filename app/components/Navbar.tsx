@@ -79,7 +79,7 @@ export default function Navbar({ className }: { className?: string }) {
         if (isMobile()) {
           setDropdownOpen(false);
         }
-      } else if (currentScrollTop + 50 < lastScrollTop.current) {
+      } else if (currentScrollTop +20 < lastScrollTop.current) {
         // Scrolling up
         setIsNavbarVisible(true);
       }
@@ -109,7 +109,7 @@ export default function Navbar({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "fixed top-14 inset-x-0 max-w-2xl mx-auto z-30 transition-transform duration-300",
+        "fixed top-14 inset-x-0 max-w-2xl mx-auto z-30 transition-all ease-in-out duration-500",
         isNavbarVisible ? "translate-y-0" : "-translate-y-[500px] ",
         className
       )}

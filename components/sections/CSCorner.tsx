@@ -19,9 +19,9 @@ const StudentCounts = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   const studentCounts: StudentCount[] = [
-    { id: 1, label: "Ilmu Komputer", value: 222 },
-    { id: 2, label: "Sistem Informasi", value: 222 },
-    { id: 3, label: "Ilmu Komputer KKI", value: 222 },
+    { id: 1, label: "Ilmu Komputer", value: 209 },
+    { id: 2, label: "Sistem Informasi", value: 239 },
+    { id: 3, label: "Ilmu Komputer KKI", value: 37 },
   ];
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const StudentCounts = () => {
             <StudentCard
               key={null}
               label="Fasilkom 2024"
-              value={222}
+              value={209+239+37}
               isVisible={isVisible}
             />
           </div>

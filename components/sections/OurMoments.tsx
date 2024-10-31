@@ -9,22 +9,16 @@ import { HoverBorderGradient } from "../ui/hover-border-gradient";
 // Di sini buat naro path gambar sama keterangannya
 const slides = [
   [
-    ["/memories/placeholder1.jpeg", "Moment 1"],
-    ["/memories/placeholder2.jpeg", "Moment 2"],
-    ["/memories/placeholder3.jpeg", "Moment 3"],
-    ["/memories/placeholder1.jpeg", "Moment 1"],
+    ["/memories/FirstMeetUpPacil 24.jpg", "First Meet Up"],
+    ["/memories/FirstMeetUp2.jpg", "First Meet Up"],
+    ["/memories/ParadeUI.jpg", "Parade UI"],
+    ["/memories/ParadeUI1.jpg", "Parade UI"],
   ],
   [
-    ["/memories/placeholder2.jpeg", "Moment 2"],
-    ["/memories/placeholder3.jpeg", "Moment 3"],
-    ["/memories/placeholder1.jpeg", "Moment 1"],
-    ["/memories/placeholder2.jpeg", "Moment 2"],
-  ],
-  [
-    ["/memories/placeholder3.jpeg", "Moment 3"],
-    ["/memories/placeholder1.jpeg", "Moment 1"],
-    ["/memories/placeholder2.jpeg", "Moment 2"],
-    ["/memories/placeholder3.jpeg", "Moment 3"],
+    ["/memories/ParadeUI2.jpg", "Parade UI"],
+    ["/memories/SosPro.jpeg", "Social Project PMB"],
+    ["/memories/SabCer.jpg", "Sabtu Ceria"],
+    ["/memories/Tumpeng.jpg", "Tumpengan"],
   ],
 ];
 
