@@ -165,7 +165,6 @@ export default function Navbar({ className }: { className?: string }) {
         >
           <ul className="font-sfPro font-extrabold text-white space-y-2">
             {menuItems
-              .filter((item) => item.name !== activeItem.name)
               .map((item) => (
                 <li key={item.name}>
                   <Link
