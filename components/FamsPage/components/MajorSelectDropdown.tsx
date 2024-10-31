@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import { OptionalMajors } from "@/modules/fams-data";
 import { MajorOption, OptionalMajorTagNames } from "./types";
 
+
 const majors: MajorOption[] = [
   { major: "Ilmu Komputer Reguler", tagName: "Ilmu Komputer" },
   { major: "Sistem Informasi", tagName: "Sistem Informasi" },
   { major: "Ilmu Komputer KKI", tagName: "KKI" },
 ];
+
 
 export const MajorSelectDropdown = ({
   onChange,
@@ -21,7 +23,7 @@ export const MajorSelectDropdown = ({
 
   useEffect(() => {
     onChange(major);
-  }, [major]);
+  }, [major, onChange]);
 
   return (
     <div className="flex-auto flex justify-end max-w-fit max-md:w-fit">
