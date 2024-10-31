@@ -36,7 +36,7 @@ export const MajorSelectDropdown = ({
               setMajor("");
               setMajorTagName("");
             }}
-            className="flex-1"
+            className="flex-1 cursor-pointer"
           />
         </div>
       ) : (
@@ -63,6 +63,7 @@ export const MajorSelectDropdown = ({
             <MajorTag
               key={index}
               tagName={e.tagName}
+              className="cursor-pointer"
               onClick={() => {
                 setMajor(e.major);
                 setMajorTagName(e.tagName);
