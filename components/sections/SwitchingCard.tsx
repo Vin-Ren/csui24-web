@@ -72,7 +72,7 @@ const SwitchingCard = () => {
                   isSmallScreen || isMediumScreen
                     ? "max-h-[220px]"
                     : "max-h-[350px]"
-                } bg-custom-gradient rounded-[35px] flex ${
+                } bg-black bg-custom-gradient rounded-[35px] flex ${
                   index === 1 ? "flex-row-reverse" : "flex-row"
                 } justify-center items-center transition-all duration-500 ease-in-out ${
                   isSmallScreen || isMediumScreen || activeCard === index
