@@ -9,7 +9,6 @@ import {
 import { SocialPaneDesktop, SocialPaneMobile } from "./sections/SocialPanes";
 import Image from "next/image";
 import Link from "next/link";
-import { blurhashToDataUrl } from "@/lib/utils";
 
 const ProfilePage = ({
   person,
@@ -58,8 +57,6 @@ const ProfilePage = ({
                 src={`/${person["image-filename"]}`}
                 alt={`foto profil ${person["nick-name"]}`}
                 fill
-                blurDataURL={blurhashToDataUrl(person['blurhash'])}
-                placeholder="blur"
                 className="object-cover"
               />
             </div>
