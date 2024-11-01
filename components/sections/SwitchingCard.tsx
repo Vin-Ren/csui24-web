@@ -13,8 +13,8 @@ const Leader = [
     message:
       "Halo, Cosmic. Welcome to Fasilkom UI! Selamat karena kalian telah secara resmi bergabung di keluarga besar Fakultas Ilmu Komputer Universitas Indonesia. Kami selaku panitia PMB 2024 mengucapkan terima kasih sebanyak-banyaknya atas kerjasama kalian selama rangkaian kegiatan PMB 2024, sehingga pada akhirnya kalian berhasil menjadi sebuah angkatan yang utuh. Ke depannya, terus jadikan angkatan kalian sebagai rumah kalian, saling dukung dan saling membantu hingga garis akhir. Gunakan privilese kalian sebagai mahasiswa/i Fasilkom UI dengan sebaik-baiknya. Gali ilmu sebanyak-banyaknya dari orang-orang di sekitar kalian (baik dosen, elemen, kakak tingkat, atau bahkan teman sebaya), cari pengalaman baru dengan mengikuti organisasi atau kepanitiaan yang sesuai, dan juga perluas koneksi kalian. Semangat terus untuk segala hal di depan! Greater and bigger things are ahead of you!"       },
   {
-    image: "/leader/leader2.png",
-    name: "Koor Angkatan 24",
+    image: "/leader/leader2.jpg",
+    name: "Koor Angkatan 24 - Tirta Rendy Siahaan",
     message:
       "Selamat atas pencapaian kalian hingga saat ini! Di tengah tantangan dan perjalanan panjang yang telah kalian lalui bersama, ingatlah bahwa kalian adalah angkatan yang luar biasa—berkumpul dari latar belakang dan pengalaman yang beragam namun dipersatukan oleh tujuan dan semangat yang sama. Ingatlah bahwa perjalanan ini bukan hanya tentang meraih prestasi akademik, tetapi juga tentang membentuk diri, membangun jejaring yang kuat, dan saling mendukung dalam mencapai mimpi. Tetaplah rendah hati, terbuka untuk belajar dari pengalaman, dan jangan pernah berhenti mengejar potensi terbaik diri kalian. Jadikan masa-masa ini kenangan berharga yang selalu bisa kalian lihat kembali dengan senyum. Apa pun jalan yang kalian ambil setelah ini, ingatlah bahwa kalian tidak pernah berjalan sendiri—ada dukungan dari teman, mentor, dan semua orang yang percaya pada kalian. Selamat melangkah ke masa depan yang cerah. Teruslah menjadi versi terbaik dari diri kalian. Angkatan 24, kalian luar biasa!",
   },
@@ -34,7 +34,7 @@ const SwitchingCard = () => {
   useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth < 768);
-      setIsMediumScreen(window.innerWidth >= 768 && window.innerWidth < 1070);
+      setIsMediumScreen(window.innerWidth >= 768 && window.innerWidth < 1024);
     };
 
     handleResize();
@@ -77,7 +77,7 @@ const SwitchingCard = () => {
                   index === 1 ? "flex-row-reverse" : "flex-row"
                 } justify-center items-center transition-all duration-500 ease-in-out ${
                   isSmallScreen || isMediumScreen || activeCard === index
-                    ? "gap-6"
+                    ? "lg:gap-6 gap-3"
                     : "gap-0"
                 } `}
               >
@@ -97,7 +97,7 @@ const SwitchingCard = () => {
                   }  `}
                 >
                   <ScrollArea
-                    className={`transition-opacity font-sfReg py-2 px-3 md:h-[300px] max-md:h-[150px] ${
+                    className={`transition-opacity font-sfReg py-2 px-3 lg:h-[300px] h-[200px] ${
                       isSmallScreen || isMediumScreen || activeCard === index
                         ? "duration-[2000ms] opacity-100"
                         : "duration-75 opacity-0"
