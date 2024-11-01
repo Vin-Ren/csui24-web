@@ -1,4 +1,3 @@
-"use client"
 import React from "react";
 import { HoverBorderGradient } from "../ui/hover-border-gradient";
 import Image from "next/image";
@@ -7,7 +6,7 @@ const LandingPageHero = () => {
     <div
       className="flex flex-col bg-center bg-cover w-screen h-[120vh] gap-12 lg:gap-24 justify-center items-center"
       style={{
-        backgroundImage: "url('landing-page/fotbar.jpg')",
+        backgroundImage: "url('landing-page/fotbar.png')",
       }}
     >
       <div className="max-w-60 sm:max-w-96 lg:max-w-none pointer-events-none">
@@ -25,7 +24,6 @@ const LandingPageHero = () => {
           containerClassName="rounded-full"
           as="button"
           className="bg-black flex text-white   items-center space-x-2 font-sfpro tracking-widest"
-          onClick={() => document.getElementById("land")?.scrollIntoView({ behavior: "smooth"})}
         >
           <span>Explore</span>
         </HoverBorderGradient>

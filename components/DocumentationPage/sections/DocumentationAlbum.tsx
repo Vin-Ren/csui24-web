@@ -78,7 +78,7 @@ const DocumentationCarousel = ({
 
 const DocumentationAlbum = () => {
   return (
-    <div id="album">
+    <div>
       {Albums.map((album, index) => {
         return (
           <DocumentationCarousel

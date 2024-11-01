@@ -1,4 +1,3 @@
-"use client"
 import React from "react";
 
 const DocumentationHero = () => {
@@ -20,8 +19,7 @@ const DocumentationHero = () => {
         <h2 className="text-white text-[3vw] lg:text-[2vw] text-center">
           Our Shared Journey
         </h2>
-        <button className="hidden lg:block bg-[#D9D9D9] transition-all duration-500 hover:opacity-75 w-fit mt-[2vw] px-[2vw] py-[1vw] rounded-lg text-[1vw] text-black font-sfReg font-semibold"
-         onClick={() => document.getElementById("album")?.scrollIntoView({ behavior: "smooth"})}>
+        <button className="hidden lg:block bg-[#D9D9D9] transition-all duration-500 hover:opacity-75 w-fit mt-[2vw] px-[2vw] py-[1vw] rounded-lg text-[1vw] text-black font-sfReg font-semibold">
           See More
         </button>
       </div>
