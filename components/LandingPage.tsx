@@ -10,7 +10,7 @@ const LandingPage = () => {
   return (
     <div>
       <LandingPageHero />
-      <div id="land" className="bgGrad">
+      <div className="bgGrad">
         <Quotes />
         <SwitchingCard />
         <OurMoments />
