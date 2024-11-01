@@ -19,7 +19,7 @@ export default function Page({ params }: { params: { id: string } }) {
     return notFound();
   }
   return (
-    <main className="min-h-screen bgGrad pt-36 pb-96">
+    <main className="bgGrad pt-36 pb-0">
       <ProfilePage person={person} prevID={prevID} nextID={nextID} />
     </main>
   );

@@ -112,16 +112,16 @@ export const SocialPaneMobile = ({ person }: { person: FamsDataType }) => {
   );
 
   return (
-    <div className="flex md:hidden flex-wrap gap-x-2 xs:gap-x-3 gap-y-2 w-full">
+    <div className="flex md:hidden flex-wrap gap-x-2 sm:gap-x-3 gap-y-2 w-full">
       {person["instagram-id"] !== null && person["instagram-id"] !== "-" && (
         <a
           target="_blank"
           rel="noopener noreferrer"
-          className="flex px-2 xs:px-3 py-1 text-black bg-[#D9D9D9] rounded-full items-center gap-x-1 xs:gap-x-2 relative"
+          className="flex px-2 sm:px-3 py-1 text-black bg-[#D9D9D9] rounded-full items-center gap-x-1 sm:gap-x-2 relative"
           href={instagramUrl}
         >
-          <FaInstagram className="size-4 xs:size-5" />
-          <h5 className="font-sfReg font-normal text-xs xs:text-sm">
+          <FaInstagram className="size-4 sm:size-5" />
+          <h5 className="font-sfReg font-normal text-xs sm:text-sm">
             @{person["instagram-id"]}
           </h5>
         </a>
@@ -130,19 +130,19 @@ export const SocialPaneMobile = ({ person }: { person: FamsDataType }) => {
         <a
           target="_blank"
           rel="noopener noreferrer"
-          className="flex px-2 xs:px-3 py-1 text-black bg-[#D9D9D9] rounded-full items-center gap-x-1 xs:gap-x-2 relative"
+          className="flex px-2 sm:px-3 py-1 text-black bg-[#D9D9D9] rounded-full items-center gap-x-1 sm:gap-x-2 relative"
           href={linkedInUrl}
         >
-          <Linkedin className="size-4 xs:size-5" />
-          <h5 className="font-sfReg font-normal text-xs xs:text-sm">
+          <Linkedin className="size-4 sm:size-5" />
+          <h5 className="font-sfReg font-normal text-xs sm:text-sm">
             {person["linkedin-id"]}
           </h5>
         </a>
       )}
       {person["line-id"] !== null && person["line-id"] !== "-" && (
-        <div className="flex px-2 xs:px-3 py-1 text-black bg-[#D9D9D9] rounded-full items-center gap-x-1 xs:gap-x-2 relative">
-          <BsLine className="size-4 xs:size-5 relative top-[1.5px]" />
-          <h5 className="font-sfReg font-normal text-xs xs:text-sm">
+        <div className="flex px-2 sm:px-3 py-1 text-black bg-[#D9D9D9] rounded-full items-center gap-x-1 sm:gap-x-2 relative">
+          <BsLine className="size-4 sm:size-5 relative top-[1.5px]" />
+          <h5 className="font-sfReg font-normal text-xs sm:text-sm">
             {person["line-id"]}
           </h5>
         </div>
@@ -151,11 +151,11 @@ export const SocialPaneMobile = ({ person }: { person: FamsDataType }) => {
         <a
           target="_blank"
           rel="noopener noreferrer"
-          className="flex px-2 xs:px-3 py-1 text-black bg-[#D9D9D9] rounded-full items-center gap-x-1 xs:gap-x-2 relative"
+          className="flex px-2 sm:px-3 py-1 text-black bg-[#D9D9D9] rounded-full items-center gap-x-1 sm:gap-x-2 relative"
           href={twitterUrl}
         >
           <RiTwitterXLine className="size-4" />
-          <h5 className="font-sfReg font-normal text-xs xs:text-sm">
+          <h5 className="font-sfReg font-normal text-xs sm:text-sm">
             {person["twitter-x-id"]}
           </h5>
         </a>

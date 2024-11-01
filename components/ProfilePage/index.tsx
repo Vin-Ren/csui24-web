@@ -54,7 +54,7 @@ const ProfilePage = ({
           <div className="flex-[1.2] sm:flex-[1] max-w-[24rem]">
             <div className="relative w-full aspect-square rounded-full overflow-hidden">
               <Image
-                src={`/${person['image-filename']}`}
+                src={`/${person["image-filename"]}`}
                 alt={`foto profil ${person["nick-name"]}`}
                 fill
                 className="object-cover"
@@ -75,12 +75,12 @@ const ProfilePage = ({
             <SocialPaneMobile person={person} />
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row sm:gap-[6%]">
-          <div className="flex-[1] max-w-[24rem]">
+        <div className="flex flex-col md:flex-row md:gap-[6%]">
+          <div className="flex-[1] md:max-w-[24rem]">
             <h2 className="font-sfPro font-bold text-lg sm:text-xl lg:text-2xl mb-2 md:mb-3 lg:mb-4">
               Description
             </h2>
-            <p className="font-sfReg font-normal text-base sm:text-lg md:text-xl lg:text-2xl text-[#B3B3B3] mb-5">
+            <p className="font-sfReg font-normal text-base sm:text-lg lg:text-xl text-[#B3B3B3] mb-5">
               {person.description}
             </p>
           </div>
@@ -88,13 +88,13 @@ const ProfilePage = ({
             <h2 className="font-sfPro font-bold text-lg sm:text-xl lg:text-2xl mb-2 md:mb-3 lg:mb-4">
               Message for CSUI {"'"}24
             </h2>
-            <p className="font-sfReg font-normal text-base sm:text-lg md:text-xl lg:text-2xl text-[#B3B3B3] mb-5 lg:mb-6">
+            <p className="font-sfReg font-normal text-base sm:text-lg lg:text-xl text-[#B3B3B3] mb-5 lg:mb-6">
               {person["message"]}
             </p>
             <h2 className="font-sfPro font-bold text-lg sm:text-xl lg:text-2xl mb-2 md:mb-3 lg:mb-4">
               Interests
             </h2>
-            <p className="font-sfReg font-normal text-base sm:text-lg md:text-xl lg:text-2xl text-[#B3B3B3] mb-5 lg:mb-6">
+            <p className="font-sfReg font-normal text-base sm:text-lg lg:text-xl text-[#B3B3B3] mb-5 lg:mb-6">
               {person.interests.join(", ")}
             </p>
           </div>
