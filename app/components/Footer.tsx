@@ -21,12 +21,12 @@ function Footer() {
     },
   ];
 
-  const socialItems = [
-    { path: "/", icon: <AiFillInstagram size={20} /> },
-    { path: "/", icon: <FaTwitter size={20} /> },
-    { path: "/", icon: <FaYoutube size={20} /> },
-    { path: "/", icon: <FaTiktok size={20} /> },
-  ];
+  // const socialItems = [
+  //   { path: "/", icon: <AiFillInstagram size={20} /> },
+  //   { path: "/", icon: <FaTwitter size={20} /> },
+  //   { path: "/", icon: <FaYoutube size={20} /> },
+  //   { path: "/", icon: <FaTiktok size={20} /> },
+  // ];
 
   return (
     <div className="flex flex-row w-full justify-around bgFoot px-0 md:px-11 py-14 overflow-hidden items-end">
