@@ -25,7 +25,7 @@ const ourTeam: Teams = [
     Team: "Core Team",
     member: [
       {
-        link: "/team/tirta-rendy-siahaan",
+        link: "/fams/tirta-rendy-siahaan",
         nickname: "TIRTA",
         fontNickname: ["45px", "30px"],
         fullname: "Tirta Rendy S",
@@ -35,7 +35,7 @@ const ourTeam: Teams = [
         image2: "/team/tirta-rendy-siahaan2.png",
       },
       {
-        link: "/team/muhammad-hamiz-ghani-ayusha",
+        link: "/fams/muhammad-hamiz-ghani-ayusha",
         nickname: "GHANI",
         fontNickname: ["45px", "30px"],
         fullname: "Hamiz Ghani",
@@ -45,7 +45,7 @@ const ourTeam: Teams = [
         image2: "/team/muhammad-hamiz-ghani-ayusha2.png",
       },
       {
-        link: "/team/geraldus-catur-gigih-wahyudi",
+        link: "/fams/geraldus-catur-gigih-wahyudi",
         nickname: "GIGIH",
         fontNickname: ["45px", "30px"],
         fullname: "Geraldus Catur Gigih",
@@ -60,7 +60,7 @@ const ourTeam: Teams = [
     Team: "IT Developer",
     member: [
       {
-        link: "/team/muhammad-fauzan",
+        link: "/fams/muhammad-fauzan",
         nickname: "FAUZAN",
         fontNickname: ["38px", "27px"],
         fullname: "Muhammad Fauzan",
@@ -70,7 +70,7 @@ const ourTeam: Teams = [
         image2: "/team/muhammad-fauzan2.png",
       },
       {
-        link: "/team/gerry-bima-putra",
+        link: "/fams/gerry-bima-putra",
         nickname: "GERRY",
         fontNickname: ["45px", "30px"],
         fullname: "Gerry Bima Putra",
@@ -80,7 +80,7 @@ const ourTeam: Teams = [
         image2: "/team/gerry-bima-putra2.png",
       },
       {
-        link: "/team/muhamad-hakim-nizami",
+        link: "/fams/muhamad-hakim-nizami",
         nickname: "HAKIM",
         fontNickname: ["42px", "28px"],
         fullname: "Hakim Nizami",
@@ -90,7 +90,7 @@ const ourTeam: Teams = [
         image2: "/team/muhamad-hakim-nizami2.png",
       },
       {
-        link: "/team/kevin-cornellius-widjaja",
+        link: "/fams/kevin-cornellius-widjaja",
         nickname: "KEVIN",
         fontNickname: ["45px", "30px"],
         fullname: "Kevin Cornellius",
@@ -100,7 +100,7 @@ const ourTeam: Teams = [
         image2: "/team/kevin-cornellius-widjaja2.png",
       },
       {
-        link: "/team/radhya-cahya-kusuma",
+        link: "/fams/radhya-cahya-kusuma",
         nickname: "RADHYA",
         fontNickname: ["35px", "25px"],
         fullname: "Radhya Cahya",
@@ -110,7 +110,7 @@ const ourTeam: Teams = [
         image2: "/team/radhya-cahya-kusuma2.png",
       },
       {
-        link: "/team/vincent-valentino-oei",
+        link: "/fams/vincent-valentino-oei",
         nickname: "VINCENT",
         fontNickname: ["33px", "22px"],
         fullname: "Vincent Valentino",
@@ -125,7 +125,7 @@ const ourTeam: Teams = [
     Team: "UI/UX Designer",
     member: [
       {
-        link: "/team/kadek-chandra-rasmi",
+        link: "/fams/kadek-chandra-rasmi",
         nickname: "CHANDRA",
         fontNickname: ["30px", "20px"],
         fullname: "Kadek Chandra",
@@ -135,7 +135,7 @@ const ourTeam: Teams = [
         image2: "/team/kadek-chandra-rasmi2.png",
       },
       {
-        link: "/team/nadin-ananda",
+        link: "/fams/nadin-ananda",
         nickname: "NADIN",
         fontNickname: ["45px", "32px"],
         fullname: "Nadin Ananda",
@@ -150,7 +150,7 @@ const ourTeam: Teams = [
     Team: "Akademik",
     member: [
       {
-        link: "/team/go-nadine-audelia",
+        link: "/fams/go-nadine-audelia",
         nickname: "NADINE",
         fontNickname: ["38px", "27px"],
         fullname: "Go Nadine Audelia",
@@ -160,7 +160,7 @@ const ourTeam: Teams = [
         image2: "/team/go-nadine-audelia2.png",
       },
       {
-        link: "/team/riyaan-baihaqi",
+        link: "/fams/riyaan-baihaqi",
         nickname: "RIYAAN",
         fontNickname: ["38px", "27px"],
         fullname: "Riyaan Baihaqi",
@@ -170,7 +170,7 @@ const ourTeam: Teams = [
         image2: "/team/riyaan-baihaqi2.png",
       },
       {
-        link: "/team/naomi-shakila-isbono",
+        link: "/fams/naomi-shakila-isbono",
         nickname: "NAOMI",
         fontNickname: ["42px", "28px"],
         fullname: "Naomi Shakila Isbono",

@@ -33,7 +33,7 @@ function Footer() {
       <div className="logo pointer-events-none max-w-24 sm:max-w-none">
         <Image src="/csfooter.png" alt="" width={150} height={150} />
       </div>
-      <div className="hidden lg:flex">
+      <div className="flex">
         <ul className="flex flex-col gap-2  justify-around w-full text-white text-xs md:text-sm font-sfSemi font-medium">
           {menuItems.map((item) => (
             <li key={item.name}>
@@ -49,7 +49,8 @@ function Footer() {
           ))}
         </ul>
       </div>
-      <div className="flex flex-col sm:flex-row justify-between items-end sm:items-center gap-10 lg:gap-32 text-xs sm:text-base">
+      {/* not yet */}
+      <div className=" hidden flex-col sm:flex-row justify-between items-end sm:items-center gap-10 lg:gap-32 text-xs sm:text-base">
         <div className="flex flex-col gap-2 ">
           <h1 className="text-white font-sfPro font-bold">Our Social Media</h1>
           <ul className="flex gap-2  justify-around w-full text-white text-xs md:text-sm font-sfSemi font-medium">
