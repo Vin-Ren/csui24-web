@@ -66,15 +66,15 @@ const CardsTeam = (props: CardsTeamProps) => {
                 <Image
                     src={props.image}
                     alt="image"
-                    width={isSmallScreen ? 120 : 166}
-                    height={isSmallScreen ? 142 : 198}
+                    width={isSmallScreen ? 300 : 415}
+                    height={isSmallScreen ? 355 : 495}
                     className="z-[3] absolute bottom-[15%] left-1/2 -translate-x-1/2 transition-opacity duration-500 group-hover:opacity-0"
                 />
                 <Image
                     src={props.image2}
                     alt="image"
-                    width={isSmallScreen ? 120 : 166}
-                    height={isSmallScreen ? 142 : 198}
+                    width={isSmallScreen ? 300 : 415}
+                    height={isSmallScreen ? 355 : 495}
                     className="z-[3] absolute bottom-[15%] left-1/2 -translate-x-1/2 transition-opacity duration-500 opacity-0 group-hover:opacity-100"
                 />
 
