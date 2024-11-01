@@ -51,7 +51,7 @@ function Footer() {
       </div>
     
       <div className="flex flex-col sm:flex-row justify-between items-end sm:items-center gap-10 lg:gap-32 text-xs sm:text-base">
-        {/* <div className="flex flex-col gap-2 ">
+        <div className="hidden flex-col gap-2 ">
           <h1 className="text-white font-sfPro font-bold">Our Social Media</h1>
           <ul className="flex gap-2  justify-around w-full text-white text-xs md:text-sm font-sfSemi font-medium">
             {socialItems.map((item) => (
@@ -67,7 +67,7 @@ function Footer() {
               </li>
             ))}
           </ul>
-        </div> */}
+        </div>
         <div className="text-white ">
           <h1 className="font-sfPro font-bold text-start">Contact Us</h1>
           <div className="flex justify-center items-center gap-2">
