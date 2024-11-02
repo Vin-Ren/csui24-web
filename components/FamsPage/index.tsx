@@ -46,7 +46,7 @@ const FamsPage = () => {
             <Card entry={entry} key={entry.id} />
           ))}
         </div>
-        {filteredFams.length || (
+        {!filteredFams.length && (
           <h1 className="text-3xl font-sfPro text-white">
             No results found for your search criteria
           </h1>
