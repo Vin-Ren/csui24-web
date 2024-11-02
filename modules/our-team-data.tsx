@@ -304,6 +304,16 @@ const ourTeam: Teams = [
         image: "/team/raden-pandji-mohammad-dimaz-bagus-hayyii-dausti-surya1.png",
         image2: "/team/raden-pandji-mohammad-dimaz-bagus-hayyii-dausti-surya2.png",
       },
+      {
+        link: "/fams/aisyah-saajidah",
+        nickname: "AISYAH",
+        fontNickname: ["35px", "31px"],
+        fullname: "Aisyah Saajidah",
+        Divisi: "Creative",
+        fontDivisi: ["30px", "20px"],
+        image: "/team/aisyah-saajidah1.png",
+        image2: "/team/aisyah-saajidah2.png",
+      },
       
     ],
   },
@@ -504,6 +514,26 @@ const ourTeam: Teams = [
         fontDivisi: ["40px", "25px"],
         image: "/team/haikal-muzaki1.png",
         image2: "/team/haikal-muzaki2.png"
+      },
+      {
+        link: "/fams/ghiyas-fazle-mawla-rahmat",
+        nickname: "GHIYAS",
+        fontNickname: ["34px", "24px"],
+        fullname: "Ghiyas Fazle",
+        Divisi: "LBM",
+        fontDivisi: ["40px", "25px"],
+        image: "/team/ghiyas-fazle-mawla-rahmat1.png",
+        image2: "/team/ghiyas-fazle-mawla-rahmat2.png"
+      },
+      {
+        link: "/fams/raditya-ikhlas-kusuma",
+        nickname: "RADITYA",
+        fontNickname: ["34px", "24px"],
+        fullname: "Raditya Ikhlas",
+        Divisi: "LBM",
+        fontDivisi: ["40px", "25px"],
+        image: "/team/raditya-ikhlas-kusuma1.png",
+        image2: "/team/raditya-ikhlas-kusuma2.png"
       },
     ]
   }
