@@ -1,7 +1,9 @@
-import React from "react";
+import FamsPage from "@/components/FamsPage";
 
-const page = () => {
-  return <div>Fams</div>;
-};
-
-export default page;
+export default function Page() {
+  return (
+    <div className="h-fit w-full bgGrad">
+      <FamsPage />
+    </div>
+  );
+}

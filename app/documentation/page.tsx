@@ -1,7 +1,12 @@
 import React from "react";
+import DocumentationPage from "@/components/DocumentationPage"
 
 const page = () => {
-  return <div>documentation</div>;
+  return (
+    <main className="bg-black">
+      <DocumentationPage />
+    </main>
+  )
 };
 
 export default page;
