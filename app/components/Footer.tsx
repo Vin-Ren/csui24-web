@@ -22,10 +22,13 @@ function Footer() {
   ];
 
   const socialItems = [
-    { path: "/", icon: <AiFillInstagram size={20} /> },
-    { path: "/", icon: <FaTwitter size={20} /> },
-    { path: "/", icon: <FaYoutube size={20} /> },
-    { path: "/", icon: <FaTiktok size={20} /> },
+    {
+      path: "https://www.instagram.com/anak_cosmic/",
+      icon: <AiFillInstagram size={20} />,
+    },
+    { path: "https://x.com/home", icon: <FaTwitter size={20} /> },
+    { path: "https://www.youtube.com/", icon: <FaYoutube size={20} /> },
+    { path: "https://www.tiktok.com/", icon: <FaTiktok size={20} /> },
   ];
 
   return (
@@ -49,7 +52,7 @@ function Footer() {
           ))}
         </ul>
       </div>
-    
+
       <div className="flex flex-col sm:flex-row justify-between items-end sm:items-center gap-10 lg:gap-32 text-xs sm:text-base">
         <div className="hidden flex-col gap-2 ">
           <h1 className="text-white font-sfPro font-bold">Our Social Media</h1>
