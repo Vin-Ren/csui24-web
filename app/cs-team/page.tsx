@@ -8,6 +8,17 @@ export const metadata: Metadata = {
   title: "CS Team | CSUI24",
   description:
     "Meet the CS Team of CSUI24 - a diverse group of creative minds and technical experts driving innovation and collaboration.",
+  keywords: [
+    "CSUI24",
+    "CS Team",
+    "Fasilkom",
+    "Fakultas Ilmu Komputer",
+    "Team Profiles",
+    "Student Team",
+    "Innovation",
+    "Collaboration",
+    "Creative Minds"
+  ],
   openGraph: {
     title: "CS Team | CSUI24",
     description:
