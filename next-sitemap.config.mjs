@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 /** @type {import('next-sitemap').IConfig} */
 const config = {
-  siteUrl: "https://csui24.vercel.app",
+  siteUrl: `https://${process.env.NEXT_PUBLIC_DOMAIN}`,
   generateRobotsTxt: true,
   sitemapSize: 5000,
   additionalPaths: async () => {
