@@ -50,11 +50,11 @@ export const metadata: Metadata = {
     title: "CSUI24: The Cosmic Connection",
     description:
       "Dive into CSUI24 - the innovative space for the Cosmic generation at Fasilkom UI. Collaborate, create, and celebrate a journey of endless possibilities.",
-    url: "https://csui24.vercel.app",
+    url: `https://${process.env.NEXT_PUBLIC_DOMAIN}`,
     type: "website",
     images: [
       {
-        url: "https://csui24.vercel.app/customBanner.png",
+        url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/customBanner.png`,
         width: 1200,
         height: 630,
         alt: "CSUI24: The Cosmic Connection",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     title: "CSUI24: The Cosmic Connection",
     description:
       "Experience CSUI24 - the creative space where the Cosmic generation at Fasilkom UI connects, innovates, and celebrates every milestone.",
-    images: ["https://csui24.vercel.app/customBanner.png"],
+    images: [`https://${process.env.NEXT_PUBLIC_DOMAIN}/customBanner.png`],
   },
   icons: {
     icon: "/favicon.png",
