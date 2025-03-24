@@ -26,8 +26,47 @@ const PalanquinDark = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "CSUI 24",
-  description: "CSUI 2024",
+  title: "CSUI24: The Cosmic Connection",
+  description:
+    "Welcome to CSUI24 - the creative hub for the Cosmic generation at Fasilkom UI. Connect, innovate, and celebrate your unique journey at Fakultas Ilmu Komputer, Universitas Indonesia.",
+  keywords: [
+    "CSUI24",
+    "CS UI 24",
+    "Fasilkom",
+    "Pacil",
+    "Cosmic",
+    "Fakultas Ilmu Komputer",
+    "Universitas Indonesia",
+    "Community",
+    "Innovation",
+    "Students",
+  ],
+  openGraph: {
+    title: "CSUI24: The Cosmic Connection",
+    description:
+      "Dive into CSUI24 - the innovative space for the Cosmic generation at Fasilkom UI. Collaborate, create, and celebrate a journey of endless possibilities.",
+    url: "https://csui24.vercel.app",
+    type: "website",
+    images: [
+      {
+        url: "https://csui24.vercel.app/customBanner.png",
+        width: 1200,
+        height: 630,
+        alt: "CSUI24: The Cosmic Connection",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CSUI24: The Cosmic Connection",
+    description:
+      "Experience CSUI24 - the creative space where the Cosmic generation at Fasilkom UI connects, innovates, and celebrates every milestone.",
+    images: ["https://csui24.vercel.app/customBanner.png"],
+  },
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
