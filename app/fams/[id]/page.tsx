@@ -1,5 +1,6 @@
-import dynamic from 'next/dynamic';
 import { famsData } from "@/modules/fams-data";
+import { notFound } from "next/navigation";
+import ProfilePage from "@/components/ProfilePage";
 
 // Server-side: generate metadata using local data
 export async function generateMetadata({ params }: { params: { id: string } }) {
@@ -41,9 +42,26 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
-// Dynamically import the client component, keeping content CSR
-const FamsProfilePage = dynamic(() => import('./FamsProfilePage.client'), { ssr: false });
 
-export default function PostPage({ params }: { params: { id: string } }) {
-  return <FamsProfilePage id={params.id} />;
+export default function Page({ params }: { params: {id: string} }) {
+  const id = params.id;
+  const personIndex = famsData.findIndex((data) => data.id == id);
+  const person = famsData[personIndex];
+  const prevID =
+    personIndex > 0
+      ? famsData[personIndex - 1].id
+      : famsData[famsData.length - 1].id;
+  const nextID =
+    personIndex + 1 < famsData.length
+      ? famsData[personIndex + 1].id
+      : famsData[0].id;
+
+  if (person === undefined) {
+    return notFound();
+  }
+  return (
+    <main className="bgGrad pt-36 pb-0">
+      <ProfilePage person={person} prevID={prevID} nextID={nextID} />
+    </main>
+  );
 }
