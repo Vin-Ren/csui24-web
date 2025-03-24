@@ -2,6 +2,35 @@ import React from "react";
 import Banner from "../../components/sections/Banner";
 import CardsTeam from "../../components/sections/CardsTeam";
 import ourTeam from "../../modules/our-team-data";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "CS Team | CSUI24",
+  description:
+    "Meet the CS Team of CSUI24 - a diverse group of creative minds and technical experts driving innovation and collaboration.",
+  openGraph: {
+    title: "CS Team | CSUI24",
+    description:
+      "Get to know the CS Team behind CSUI24. Discover the profiles, roles, and stories of our talented team members.",
+    url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/cs-team`,
+    type: "website",
+    images: [
+      {
+        url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/documentation/Parade4.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "CS Team at CSUI24",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CS Team | CSUI24",
+    description:
+      "Meet the talented CS Team behind CSUI24 and learn more about their roles and expertise.",
+    images: [`https://${process.env.NEXT_PUBLIC_DOMAIN}/documentation/Parade4.jpg`],
+  },
+};
 
 const Page = () => {
   return (
