@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 const config = {
   siteUrl: `https://${process.env.NEXT_PUBLIC_DOMAIN}`,
   generateRobotsTxt: true,
-  sitemapSize: 5000,
+  generateIndexSitemap: false,
   additionalPaths: async () => {
     const jsonPath = path.join(__dirname, "modules/fams-data.json");
     const rawData = fs.readFileSync(jsonPath, "utf-8");
@@ -18,7 +18,7 @@ const config = {
 
     return famsData.data.map((fam) => ({
       loc: `/fams/${fam.id}`,
-      lastmod: new Date().toISOString(),
+      lastmod: new Date(famsData["parsed-at"]*1000).toISOString(),
     }));
   },
 };
