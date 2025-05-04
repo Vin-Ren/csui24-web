@@ -2,8 +2,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Analytics } from "@vercel/analytics/react"
+// import { SpeedInsights } from "@vercel/speed-insights/next"
+// import { Analytics } from "@vercel/analytics/react"
 
 import "./globals.css";
 import Navbar from "./components/Navbar";
@@ -81,14 +81,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+      <script defer data-domain="csui24.vercel.app" src="https://plausible-app.fly.dev/js/script.js"></script>
+      </head>
       <body
         className={`${monumentExt.variable} ${sfPro.variable}  ${sfReg.variable} ${UncialAntiqua.variable} ${PalanquinDark.variable}`}
       >
         <Navbar />
         <main className="overflow-hidden">{children}</main>
         <Footer />
-        <SpeedInsights/>
-        <Analytics mode="production"/>
+        {/* <SpeedInsights/>
+        <Analytics mode="production"/> */}
       </body>
     </html>
   );
