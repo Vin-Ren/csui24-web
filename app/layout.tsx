@@ -83,7 +83,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
       <script defer src="https://umamir.fly.dev/script.js" data-website-id="1857d05e-6ae5-41da-9456-2a1a0a7bf9ec"></script>
-      <script defer data-domain="csui24.vercel.app" src="https://plausible-app.fly.dev/js/script.js"></script>
       </head>
       <body
         className={`${monumentExt.variable} ${sfPro.variable}  ${sfReg.variable} ${UncialAntiqua.variable} ${PalanquinDark.variable}`}
