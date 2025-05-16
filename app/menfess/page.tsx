@@ -2,14 +2,17 @@
 import SendMenfess from "./send";
 import { useState } from "react";
 import MenfessCard from "./card";
+import { Button } from "@/components/ui/button";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 const MenfessPage = () => {
-  const [isSendMenfess, setIsSendMenfess] = useState(true);
+  const [isSendMenfess, setIsSendMenfess] = useState(false);
   const menfess = [
     {
       to: "CS Team",
       from: "Anonymous",
-      message: "I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! ",
+      message:
+        "I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! I love you guys! ",
       date: "2023-10-01T12:00:00Z",
     },
     {
@@ -31,7 +34,20 @@ const MenfessPage = () => {
         </p>
       </div>
 
-      {isSendMenfess ? <SendMenfess /> : null}
+      {isSendMenfess ? (
+        <SendMenfess />
+      ) : (
+        <div className="flex justify-center">
+          <HoverBorderGradient
+            containerClassName="rounded-xl"
+            as="button"
+            className="bg-black flex text-white   items-center space-x-2 font-sfpro tracking-widest "
+            onClick={() => setIsSendMenfess(true)}
+          >
+            <span>Create your menfess!</span>
+          </HoverBorderGradient>
+        </div>
+      )}
       <div className="grid grid-cols-2 max-lg:grid-cols-1 gap-10">
         {menfess.map((menfess, index) => (
           <MenfessCard key={index} menfess={menfess} />
