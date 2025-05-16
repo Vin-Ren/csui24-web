@@ -1,6 +1,6 @@
-
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Toaster } from "@/components/ui/sonner";
 
 // import { SpeedInsights } from "@vercel/speed-insights/next"
 // import { Analytics } from "@vercel/analytics/react"
@@ -82,7 +82,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <script defer src="https://umamir.fly.dev/script.js" data-website-id="1857d05e-6ae5-41da-9456-2a1a0a7bf9ec"></script>
+        <script
+          defer
+          src="https://umamir.fly.dev/script.js"
+          data-website-id="1857d05e-6ae5-41da-9456-2a1a0a7bf9ec"
+        ></script>
       </head>
       <body
         className={`${monumentExt.variable} ${sfPro.variable}  ${sfReg.variable} ${UncialAntiqua.variable} ${PalanquinDark.variable}`}
@@ -90,6 +94,7 @@ export default function RootLayout({
         <Navbar />
         <main className="overflow-hidden">{children}</main>
         <Footer />
+        <Toaster />
         {/* <SpeedInsights/>
         <Analytics mode="production"/> */}
       </body>

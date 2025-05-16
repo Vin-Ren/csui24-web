@@ -3,7 +3,14 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Home, Earth, HardHat, Clapperboard, Menu } from "lucide-react";
+import {
+  Home,
+  Earth,
+  HardHat,
+  Clapperboard,
+  Menu,
+  BookHeart,
+} from "lucide-react";
 
 export default function Navbar({ className }: { className?: string }) {
   const pathname = usePathname();
@@ -23,9 +30,15 @@ export default function Navbar({ className }: { className?: string }) {
       path: "/documentation",
       icon: <Clapperboard size={15} />,
     },
+    {
+      name: "Menfess",
+      path: "/menfess",
+      icon: <BookHeart size={15} />,
+    },
   ];
 
-  const isActive = (path: string) => `/${pathname.split("/")[1]}` === path;
+  const isActive = (path: string) =>
+    pathname ? `/${pathname.split("/")[1]}` === path : false;
 
   // active item
   const activeItem =
@@ -79,7 +92,7 @@ export default function Navbar({ className }: { className?: string }) {
         if (isMobile()) {
           setDropdownOpen(false);
         }
-      } else if (currentScrollTop +20 < lastScrollTop.current) {
+      } else if (currentScrollTop + 20 < lastScrollTop.current) {
         // Scrolling up
         setIsNavbarVisible(true);
       }
@@ -164,19 +177,18 @@ export default function Navbar({ className }: { className?: string }) {
           } transition-all duration-300 mt-2 mx-auto w-fit rounded-2xl bg-[#1D1D1D] bg-opacity-75 border-2 border-[#717174] backdrop-blur-sm shadow-input py-5 px-4 gap-3 z-50`}
         >
           <ul className="font-sfPro font-extrabold text-white space-y-2">
-            {menuItems
-              .map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.path}
-                    className="flex items-center space-x-2 text-sm hover:opacity-100 opacity-75 transition-opacity"
-                    onClick={() => setDropdownOpen(false)}
-                  >
-                    {item.icon}
-                    <span>{item.name}</span>
-                  </Link>
-                </li>
-              ))}
+            {menuItems.map((item) => (
+              <li key={item.name}>
+                <Link
+                  href={item.path}
+                  className="flex items-center space-x-2 text-sm hover:opacity-100 opacity-75 transition-opacity"
+                  onClick={() => setDropdownOpen(false)}
+                >
+                  {item.icon}
+                  <span>{item.name}</span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       }

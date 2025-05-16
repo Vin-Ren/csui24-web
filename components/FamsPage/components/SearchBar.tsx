@@ -10,41 +10,42 @@ export const SearchBar = ({
 }: {
   onChange: (searchCriteria: SearchCriteria) => void;
 }) => {
-  const router = useRouter()
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const [searchCriteria, setSearchCriteria] = useState<SearchCriteria>(() => {
-    return ({
-      name: (searchParams.get('qname') || "") as SearchCriteria['name'],
-      major: (searchParams.get('qmajor') || "") as SearchCriteria['major'],
-    })
+    return {
+      name: (searchParams?.get("qname") || "") as SearchCriteria["name"],
+      major: (searchParams?.get("qmajor") || "") as SearchCriteria["major"],
+    };
   });
 
-  const textInputOnChange = useCallback((e: ChangeEvent<HTMLInputElement>) =>
-    setSearchCriteria((p) => ({
-      major: p.major,
-      name: e.target.value
-    })
-    ), [])
+  const textInputOnChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) =>
+      setSearchCriteria((p) => ({
+        major: p.major,
+        name: e.target.value,
+      })),
+    []
+  );
 
   const majorSelectDropdownOnChange = useCallback((major: OptionalMajors) => {
-    setSearchCriteria((p) => ({ ...p, major }))
-  }, [])
+    setSearchCriteria((p) => ({ ...p, major }));
+  }, []);
 
   const createQueryString = useCallback(() => {
-    const params = new URLSearchParams(searchParams.toString())
-    params.set('qname', searchCriteria.name)
-    params.set('qmajor', searchCriteria.major)
-    return params.toString()
-  }, [searchCriteria, searchParams])
-
+    const params = new URLSearchParams(searchParams?.toString());
+    params.set("qname", searchCriteria.name);
+    params.set("qmajor", searchCriteria.major);
+    return params.toString();
+  }, [searchCriteria, searchParams]);
 
   useEffect(() => {
     if (!searchCriteria.name) {
       createQueryString();
       onChange(searchCriteria);
-      router.push(`${pathname}?${createQueryString()}`)
+      router.push(`${pathname}?${createQueryString()}`);
       return;
     }
     const timeOutId = setTimeout(() => {
@@ -68,9 +69,7 @@ export const SearchBar = ({
         onChange={textInputOnChange}
         value={searchCriteria.name}
       />
-      <MajorSelectDropdown
-        onChange={majorSelectDropdownOnChange}
-      />
+      <MajorSelectDropdown onChange={majorSelectDropdownOnChange} />
     </div>
   );
 };
