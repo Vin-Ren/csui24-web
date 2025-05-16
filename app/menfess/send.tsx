@@ -7,13 +7,9 @@ import { Send } from "lucide-react";
 import { briefFamsData } from "@/modules/fams-data";
 import { useMemo } from "react";
 import Image from "next/image";
+import { toast } from "sonner";
 
 const SendMenfess = () => {
-  const [menfess, setMenfess] = useState({
-    to: "",
-    from: "",
-    message: "",
-  });
   const [to, setTo] = useState("");
   const [paciliansTo, setPaciliansTo] = useState("");
   const [suggestionsTo, setSuggestionsTo] = useState(false);
@@ -34,9 +30,51 @@ const SendMenfess = () => {
     });
   }, [from]);
 
-  const [message, setMessage] = useState("");
+  const handleSend = async () => {
+    if (to.length === 0 || from.length === 0 || message.length === 0) {
+      toast.error("Please fill all fields");
+      return;
+    }
+    let menfess = {
+      to: to,
+      from: from,
+      message: message,
+    };
+    if (paciliansTo) {
+      setTo("fams/" + paciliansTo);
+      setPaciliansTo("");
+      menfess.to = "fams/" + paciliansTo;
+    }
+    if (paciliansFrom) {
+      setFrom("fams/" + paciliansFrom);
+      setPaciliansFrom("");
+      menfess.from = "fams/" + paciliansFrom;
+    }
+    console.log(to, from, message);
+    const loader = toast.loading("Sending menfess...");
+    const res = await fetch("/api/menfess", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(menfess),
+    });
+    const data = await res.json();
+    if (data.success) {
+      toast.success("Menfess sent successfully", {
+        id: loader,
+      });
+    } else {
+      toast.error(data.message, {
+        id: loader,
+      });
+    }
+    setTo("");
+    setFrom("");
+    setMessage("");
+  };
 
-  console.log(briefFamsData);
+  const [message, setMessage] = useState("");
   return (
     <div className="w-full p-10 max-lg:p-8 flex flex-col gap-4 max-sm:p-6 bg-[#03045e] border border-[#717174] bg-opacity-30 rounded-2xl text-white transition-all">
       <h1 className="text-white font-sfPro font-[400] opacity-80 text-base sm:text-lg md:text-xl lg:text-2xl">
@@ -156,6 +194,7 @@ const SendMenfess = () => {
         />
       </div>
       <Button
+        onClick={handleSend}
         className="w-fit px-6 self-end border bg-slate-400"
         variant={"secondary"}
       >
