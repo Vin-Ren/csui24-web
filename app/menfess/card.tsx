@@ -46,7 +46,7 @@ const MenfessCard = ({
               {fromIsFam ? (
                 <Link
                   href={"/" + from}
-                  className="hover:opacity-80 cursor-pointer"
+                  className="hover:opacity-80 duration-300 transition-all cursor-pointer"
                 >
                   <p className="text-lg font-bold truncate whitespace-nowrap overflow-hidden max-w-full">
                     {
@@ -87,7 +87,7 @@ const MenfessCard = ({
               {toIsFam ? (
                 <Link
                   href={"/" + to}
-                  className="hover:opacity-80 cursor-pointer"
+                  className="hover:opacity-80 duration-300 transition-all cursor-pointer"
                 >
                   <p className="text-lg font-bold truncate whitespace-nowrap overflow-hidden max-w-full">
                     {
