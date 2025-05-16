@@ -34,39 +34,13 @@ export default async function handler(
         data: null,
       });
     }
-
-    // Simple in-memory rate limiter per IP
-    const ip =
-      req.headers["x-forwarded-for"]?.toString().split(",")[0].trim() ||
-      req.socket.remoteAddress ||
-      "";
-    const now = Date.now();
-    const WINDOW_SIZE = 60 * 1000; // 1 minute
-    const MAX_REQUESTS = 10;
-
-    // Use a global object to store request timestamps per IP
-    if (!(global as any).rateLimitStore) {
-      (global as any).rateLimitStore = {};
-    }
-    const store = (global as any).rateLimitStore;
-
-    if (!store[ip]) {
-      store[ip] = [];
-    }
-    // Remove timestamps older than WINDOW_SIZE
-    store[ip] = store[ip].filter(
-      (timestamp: number) => now - timestamp < WINDOW_SIZE
-    );
-
-    if (store[ip].length >= MAX_REQUESTS) {
-      return res.status(429).json({
+    if (to.length > 50 || from.length > 50 || message.length > 500) {
+      return res.status(400).json({
         success: false,
-        message: "Too many requests. Please try again later.",
+        message: "Input exceeds maximum length",
         data: null,
       });
     }
-
-    store[ip].push(now);
 
     try {
       const newMenfess = await prisma.menfess.create({
@@ -82,7 +56,7 @@ export default async function handler(
         message: "Menfess created successfully",
         data: newMenfess,
       });
-    } catch (error) {
+    } catch {
       res.status(500).json({
         success: false,
         message: "Internal server error",

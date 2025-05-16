@@ -35,7 +35,7 @@ const SendMenfess = () => {
       toast.error("Please fill all fields");
       return;
     }
-    let menfess = {
+    const menfess = {
       to: to,
       from: from,
       message: message,
