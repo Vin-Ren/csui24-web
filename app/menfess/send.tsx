@@ -64,14 +64,14 @@ const SendMenfess = () => {
       toast.success("Menfess sent successfully", {
         id: loader,
       });
+      setTo("");
+      setFrom("");
+      setMessage("");
     } else {
       toast.error(data.message, {
         id: loader,
       });
     }
-    setTo("");
-    setFrom("");
-    setMessage("");
   };
 
   const [message, setMessage] = useState("");
