@@ -1,7 +1,7 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 import { decode } from "blurhash";
-import { createCanvas } from "@napi-rs/canvas";
+import { createCanvas } from "canvas";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
