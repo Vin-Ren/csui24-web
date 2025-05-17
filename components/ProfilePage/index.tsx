@@ -9,7 +9,7 @@ import {
 import { SocialPaneDesktop, SocialPaneMobile } from "./sections/SocialPanes";
 import Image from "next/image";
 import Link from "next/link";
-import { blurhashToDataUrl } from "@/lib/utils";
+import { blurhashToBase64 } from 'blurhash-base64';
 
 const ProfilePage = ({
   person,
@@ -58,7 +58,7 @@ const ProfilePage = ({
                 src={`/${person["image-filename"]}`}
                 alt={`foto profil ${person["nick-name"]}`}
                 fill
-                blurDataURL={blurhashToDataUrl(person['blurhash'])}
+                blurDataURL={blurhashToBase64(person['blurhash'])}
                 placeholder="blur"
                 className="object-cover"
               />
