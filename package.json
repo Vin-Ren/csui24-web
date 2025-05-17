@@ -10,6 +10,7 @@
     "postbuild": "next-sitemap --config next-sitemap.config.mjs"
   },
   "dependencies": {
+    "@napi-rs/canvas": "^0.1.70",
     "@prisma/client": "^6.8.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-scroll-area": "^1.2.0",
@@ -45,5 +46,6 @@
     "prisma": "^6.8.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
-  }
+  },
+  "packageManager": "pnpm@10.6.2+sha512.47870716bea1572b53df34ad8647b42962bc790ce2bf4562ba0f643237d7302a3d6a8ecef9e4bdfc01d23af1969aa90485d4cebb0b9638fa5ef1daef656f6c1b"
 }
