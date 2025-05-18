@@ -78,7 +78,7 @@ export default async function handler(
         data: null,
       });
     }
-    if (to.length > 50 || from.length > 50 || message.length > 500) {
+    if (to.length > 60 || from.length > 60 || message.length > 500) {
       return res.status(400).json({
         success: false,
         message: "Input exceeds maximum length",
