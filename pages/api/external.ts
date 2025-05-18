@@ -23,17 +23,6 @@ export default async function handler(
         createdAt: "desc",
       },
     });
-    for (const menfess of data) {
-      const { id } = menfess;
-      await prisma.menfess.update({
-        where: {
-          id,
-        },
-        data: {
-          isPosted: true,
-        },
-      });
-    }
     return res.status(200).json({
       success: true,
       message: "Menfess fetched successfully",
