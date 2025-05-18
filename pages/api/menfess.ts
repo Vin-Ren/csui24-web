@@ -69,7 +69,7 @@ export default async function handler(
       data,
     });
   } else if (req.method === "POST") {
-    let { to, from, message } = req.body;
+    const { to, from, message } = req.body;
 
     if (!to || !from || !message) {
       return res.status(400).json({
