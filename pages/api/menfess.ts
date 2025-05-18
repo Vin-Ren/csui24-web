@@ -121,8 +121,8 @@ export default async function handler(
             isPosted: true,
           },
         });
-      } catch {
-        console.log("Failed to send tweet");
+      } catch (e) {
+        console.log("Failed to send tweet", e);
       }
 
       return res.status(200).json({
