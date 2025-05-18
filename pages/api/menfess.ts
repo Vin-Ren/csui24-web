@@ -1,9 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@/lib/generated/prisma";
 import { LRUCache } from "lru-cache";
+import { TwitterApi } from "twitter-api-v2";
+import { briefFamsData } from "@/modules/fams-data";
 
 const prisma = new PrismaClient();
-
 
 const rateLimit = new LRUCache<string, { count: number; lastRequest: number }>({
   max: 500,
@@ -47,7 +48,7 @@ export default async function handler(
         lastRequest: record.lastRequest,
       });
     }
-    console.log(rateLimit.get(ip))
+    console.log(rateLimit.get(ip));
   }
 
   if (req.method === "GET") {
@@ -93,11 +94,41 @@ export default async function handler(
           message,
         },
       });
+      const twitterClient = new TwitterApi({
+        appKey: process.env.X_API_KEY!,
+        appSecret: process.env.X_API_KEY_SECRET!,
+        accessToken: process.env.X_ACCESS_TOKEN!,
+        accessSecret: process.env.X_ACCESS_TOKEN_SECRET!,
+      });
+      try {
+        const fromUser =
+          briefFamsData.find((fam) => fam.id === from.replace("fams/", ""))?.[
+            "full-name"
+          ] || "";
+        const toUser =
+          briefFamsData.find((fam) => fam.id === to.replace("fams/", ""))?.[
+            "full-name"
+          ] || "";
+        const FromMessage = fromUser ? fromUser + " CSUI24" : from;
+        const ToMessage = toUser ? toUser + " CSUI24" : to;
+        const tweet = await twitterClient.v2.tweet(
+          `From : ${FromMessage}\nTo : ${ToMessage}\n\n${message}`
+        );
+        console.log("Tweet sent successfully:", tweet);
+        await prisma.menfess.update({
+          where: { id: newMenfess.id },
+          data: {
+            isPosted: true,
+          },
+        });
+      } catch {
+        console.log("Failed to send tweet");
+      }
 
       return res.status(200).json({
         success: true,
         message: "Menfess created successfully",
-        data: newMenfess,
+        data: null,
       });
     } catch {
       return res.status(500).json({
