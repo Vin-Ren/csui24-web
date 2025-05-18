@@ -4,7 +4,6 @@ import { LRUCache } from "lru-cache";
 
 const prisma = new PrismaClient();
 
-
 const rateLimit = new LRUCache<string, { count: number; lastRequest: number }>({
   max: 500,
   ttl: 1000 * 60, // 60 seconds
@@ -47,7 +46,7 @@ export default async function handler(
         lastRequest: record.lastRequest,
       });
     }
-    console.log(rateLimit.get(ip))
+    console.log(rateLimit.get(ip));
   }
 
   if (req.method === "GET") {
