@@ -81,57 +81,6 @@ const SendMenfess = () => {
         Send Menfess
       </h1>
       <div className="flex max-sm:flex-col gap-4">
-        {/* To */}
-        <div className="flex flex-col gap-1 w-full">
-          <p className="text-xs text-slate-400">To</p>
-          <div className="relative">
-            <Input
-              className="bg-transparent border-[#717174]"
-              type="text"
-              placeholder="Who’s this for?"
-              onChange={(e) => {
-                setTo(e.target.value);
-                setPaciliansTo("");
-              }}
-              value={to}
-              onFocus={() => {
-                setSuggestionsTo(true);
-              }}
-              onBlur={() => {
-                setTimeout(() => {
-                  setSuggestionsTo(false);
-                }, 200);
-              }}
-            />
-            <div
-              className={`${suggestionsTo ? "" : "hidden"} absolute w-full h-fit max-h-48 bg-white rounded-b-lg overflow-y-auto overflow-x-hidden flex flex-col gap-1`}
-            >
-              {filteredTo.map((entry) => {
-                return (
-                  <div
-                    className="p-2 text-black hover:translate-x-2 transition-all flex items-center gap-2 cursor-pointer rounded-b-lg"
-                    key={entry.id}
-                    onClick={() => {
-                      setPaciliansTo(entry.id);
-                      setTo(entry.id);
-                      filteredTo.length = 0;
-                    }}
-                  >
-                    <Image
-                      src={"/" + entry["image-filename"]}
-                      alt={entry["full-name"]}
-                      width={16}
-                      height={16}
-                      className="rounded-full"
-                    />
-                    <p className="text-sm font-sfReg">{entry["full-name"]}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-        {/* End To */}
         {/* From */}
         <div className="flex flex-col gap-1 w-full">
           <p className="text-xs text-slate-400">From</p>
@@ -183,6 +132,57 @@ const SendMenfess = () => {
           </div>
         </div>
         {/* End From */}
+        {/* To */}
+        <div className="flex flex-col gap-1 w-full">
+          <p className="text-xs text-slate-400">To</p>
+          <div className="relative">
+            <Input
+              className="bg-transparent border-[#717174]"
+              type="text"
+              placeholder="Who’s this for?"
+              onChange={(e) => {
+                setTo(e.target.value);
+                setPaciliansTo("");
+              }}
+              value={to}
+              onFocus={() => {
+                setSuggestionsTo(true);
+              }}
+              onBlur={() => {
+                setTimeout(() => {
+                  setSuggestionsTo(false);
+                }, 200);
+              }}
+            />
+            <div
+              className={`${suggestionsTo ? "" : "hidden"} absolute w-full h-fit max-h-48 bg-white rounded-b-lg overflow-y-auto overflow-x-hidden flex flex-col gap-1`}
+            >
+              {filteredTo.map((entry) => {
+                return (
+                  <div
+                    className="p-2 text-black hover:translate-x-2 transition-all flex items-center gap-2 cursor-pointer rounded-b-lg"
+                    key={entry.id}
+                    onClick={() => {
+                      setPaciliansTo(entry.id);
+                      setTo(entry.id);
+                      filteredTo.length = 0;
+                    }}
+                  >
+                    <Image
+                      src={"/" + entry["image-filename"]}
+                      alt={entry["full-name"]}
+                      width={16}
+                      height={16}
+                      className="rounded-full"
+                    />
+                    <p className="text-sm font-sfReg">{entry["full-name"]}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+        {/* End To */}
       </div>
       <div className="flex flex-col gap-1 w-full">
         <p className="text-xs text-slate-400">Message</p>
