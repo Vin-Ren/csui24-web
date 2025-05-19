@@ -45,5 +45,10 @@ export default async function handler(
         isPosted: true,
       },
     });
+    return res.status(200).json({
+      success: true,
+      message: "Menfess posted successfully",
+      data: null,
+    });
   }
 }
