@@ -2,7 +2,7 @@ import { Plane, MailCheck, CalendarDays } from "lucide-react";
 import formatRelativeTime from "@/lib/formatRelativeTime";
 import Link from "next/link";
 import { briefFamsData } from "@/modules/fams-data";
-import Image from "next/image";
+import { Img } from "react-image";
 
 const MenfessCard = ({
   menfess,
@@ -24,7 +24,7 @@ const MenfessCard = ({
         <div className="w-full flex flex-col max-sm:gap-2 gap-4 text-white">
           <div className="w-full flex gap-3 items-center">
             {fromIsFam ? (
-              <Image
+              <Img
                 src={
                   "/" +
                     briefFamsData.find(
@@ -65,7 +65,7 @@ const MenfessCard = ({
           </div>
           <div className="w-full flex gap-3 items-center">
             {toIsFam ? (
-              <Image
+              <Img
                 src={
                   "/" +
                     briefFamsData.find(
