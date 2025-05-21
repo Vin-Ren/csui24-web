@@ -4,7 +4,7 @@ export type Reaction = {
   count: number
 }
 
-export interface Menfess {
+export interface MenfessType {
   id: string;
   to: string;
   from: string;

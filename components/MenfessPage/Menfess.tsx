@@ -3,9 +3,9 @@ import SendMenfess from "./send";
 import { useState } from "react";
 import MenfessCard from "./card";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-import { Menfess as MenfessInterface } from "./types";
+import { MenfessType } from "./types";
 
-const Menfess = ({ menfess }: { menfess: MenfessInterface[] }) => {
+const Menfess = ({ menfess }: { menfess: MenfessType[] }) => {
   const [isSendMenfess, setIsSendMenfess] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   

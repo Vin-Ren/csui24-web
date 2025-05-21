@@ -3,11 +3,11 @@ import formatRelativeTime from "@/lib/formatRelativeTime";
 import Link from "next/link";
 import { briefFamsData } from "@/modules/fams-data";
 import { Img } from "react-image";
-import { Menfess } from "./types";
+import { MenfessType } from "./types";
 import { ReactionBar } from "./reactionBar";
 
 
-const MenfessCard = ({ menfess }: { menfess: Menfess }) => {
+const MenfessCard = ({ menfess }: { menfess: MenfessType }) => {
   const { to, from, message, createdAt } = menfess;
   const toIsFam = to.startsWith("fams/");
   const fromIsFam = from.startsWith("fams/");

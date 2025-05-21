@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import Menfess from "./Menfess";
-import { Menfess as MenfessInterface } from "./types";
+import Menfess from "@/components/MenfessPage/Menfess";
+import { MenfessType } from "@/components/MenfessPage/types";
 
 export const metadata: Metadata = {
   title: "Menfess | CSUI24",
@@ -48,7 +48,7 @@ const MenfessPage = async () => {
   const resJson: {
     success: boolean;
     message: string;
-    data: MenfessInterface[];
+    data: MenfessType[];
   } = await res.json();
 
   return <Menfess menfess={resJson.data} />;
