@@ -15,10 +15,21 @@ datasource db {
 }
 
 model Menfess {
-  id        String   @id @default(uuid())
+  id        String     @id @default(uuid())
   to        String
   from      String
   message   String
-  isPosted  Boolean  @default(false)
-  createdAt DateTime @default(now())
+  isPosted  Boolean    @default(false)
+  createdAt DateTime   @default(now())
+  reactions Reaction[]
+}
+
+model Reaction {
+  id        String  @id @default(cuid())
+  menfessId String
+  menfess   Menfess @relation(fields: [menfessId], references: [id])
+  type      String // e.g., 'like', 'love', 'laugh'
+  count     Int     @default(0)
+
+  @@unique([menfessId, type]) // one row per menfessId + reaction type
 }
