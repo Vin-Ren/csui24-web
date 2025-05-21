@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "Journey Documentation | CSUI24",
     description:
       "Dive into the documented journey of CSUI24 and witness the evolution, milestones, and creative adventures of our Cosmic community at Fasilkom UI.",
-    url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/documentation`,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/documentation`,
     type: "website",
     images: [
       {

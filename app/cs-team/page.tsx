@@ -23,11 +23,11 @@ export const metadata: Metadata = {
     title: "CS Team | CSUI24",
     description:
       "Get to know the CS Team behind CSUI24. Discover the profiles, roles, and stories of our talented team members.",
-    url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/cs-team`,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/cs-team`,
     type: "website",
     images: [
       {
-        url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/documentation/Parade4.jpg`,
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/documentation/Parade4.jpg`,
         width: 1200,
         height: 630,
         alt: "CS Team at CSUI24",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: "CS Team | CSUI24",
     description:
       "Meet the talented CS Team behind CSUI24 and learn more about their roles and expertise.",
-    images: [`https://${process.env.NEXT_PUBLIC_DOMAIN}/documentation/Parade4.jpg`],
+    images: [`${process.env.NEXT_PUBLIC_BASE_URL}/documentation/Parade4.jpg`],
   },
 };
 

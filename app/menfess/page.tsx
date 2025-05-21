@@ -20,11 +20,11 @@ export const metadata: Metadata = {
     title: "Menfess | CSUI24",
     description:
       "Read and share anonymous messages from CSUI24 students. Menfess is your space for candid, honest, and sometimes hilarious thoughts from the Fasilkom UI community.",
-    url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/menfess`,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/menfess`,
     type: "website",
     images: [
       {
-        url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/customBanner.jpg`,
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/customBanner.jpg`,
         width: 1200,
         height: 630,
         alt: "Menfess | CSUI24",
@@ -36,13 +36,13 @@ export const metadata: Metadata = {
     title: "Menfess | CSUI24",
     description:
       "Confessions, rants, and inside jokes — see what CSUI24 is talking about anonymously through Menfess.",
-    images: [`https://${process.env.NEXT_PUBLIC_DOMAIN}/customBanner.jpg`],
+    images: [`${process.env.NEXT_PUBLIC_BASE_URL}/customBanner.jpg`],
   },
 };
 
 
 const MenfessPage = async () => {
-  const res = await fetch(`https://${process.env.NEXT_PUBLIC_DOMAIN}/api/menfess`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/menfess`, {
     cache: "no-store",
   });
   const resJson: {

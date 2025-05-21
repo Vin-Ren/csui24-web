@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   }
 
   const metaTitle = `${fam['displayed-name']}'${fam['displayed-name'].toLowerCase().endsWith('s')? '' : 's'} Profile`;
-  const metaImage = `https://${process.env.NEXT_PUBLIC_DOMAIN}/${fam['image-filename']}`
+  const metaImage = `${process.env.NEXT_PUBLIC_BASE_URL}/${fam['image-filename']}`
 
   return {
     title: metaTitle,
@@ -22,11 +22,11 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
     openGraph: {
       title: metaTitle,
       description: fam.description,
-      url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/fams/${fam.id}`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/fams/${fam.id}`,
       type: 'article',
       images: [
         {
-          url: metaImage || `https://${process.env.NEXT_PUBLIC_DOMAIN}/customBanner.png`,
+          url: metaImage || `${process.env.NEXT_PUBLIC_BASE_URL}/customBanner.png`,
           width: 1200,
           height: 630,
           alt: metaTitle,
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
       card: 'summary_large_image',
       title: metaTitle,
       description: fam.description,
-      images: [metaImage || `https://${process.env.NEXT_PUBLIC_DOMAIN}/customBanner.png`],
+      images: [metaImage || `${process.env.NEXT_PUBLIC_BASE_URL}/customBanner.png`],
     },
   };
 }

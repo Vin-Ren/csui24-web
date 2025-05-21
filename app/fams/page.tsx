@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     title: "Fams | CSUI24",
     description:
       "Browse the profiles of CSUI24 members and connect with a vibrant community at Fasilkom UI. Discover inspiring stories and diverse talents.",
-    url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/fams`,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/fams`,
     type: "website",
     images: [
       {
-        url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/landing-page/fotbar.jpg`,
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/landing-page/fotbar.jpg`,
         width: 1200,
         height: 630,
         alt: "Fams | CSUI24",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "Fams | CSUI24",
     description:
       "Meet the members of CSUI24. Explore our directory of profiles to connect with the community at Fasilkom UI.",
-    images: [`https://${process.env.NEXT_PUBLIC_DOMAIN}/landing-page/fotbar.jpg`],
+    images: [`${process.env.NEXT_PUBLIC_BASE_URL}/landing-page/fotbar.jpg`],
   },
 };
 
