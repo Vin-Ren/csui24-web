@@ -7,13 +7,7 @@ import { Menfess } from "./types";
 import { ReactionBar } from "./reactionBar";
 
 
-export interface MenfessCardProps {
-  menfess: Menfess
-}
-
-const MenfessCard = ({
-  menfess,
-}: MenfessCardProps) => {
+const MenfessCard = ({ menfess }: { menfess: Menfess }) => {
   const { to, from, message, createdAt } = menfess;
   const toIsFam = to.startsWith("fams/");
   const fromIsFam = from.startsWith("fams/");

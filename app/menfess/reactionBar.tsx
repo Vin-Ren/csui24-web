@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Reaction } from './types'
 import { useLocalStorageSet } from '@/hooks/useLocalStorageSet'
 
@@ -13,8 +13,6 @@ const enabledReactions = (process.env.NEXT_PUBLIC_ENABLED_REACTIONS ?? '')
   .split(',')
   .map(r => r.trim())
   .filter(Boolean)
-
-const LOCAL_STORAGE_KEY_PREFIX = 'menfess-reactions:'
 
 export function ReactionBar({ menfessId, initialReactions }: ReactionBarProps) {
   // Map reaction type -> count for quick access
