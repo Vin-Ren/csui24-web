@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Menfess from "./Menfess";
-import { MenfessInterface } from "./Menfess";
+import { Menfess as MenfessInterface } from "./types";
 
 export const metadata: Metadata = {
   title: "Menfess | CSUI24",

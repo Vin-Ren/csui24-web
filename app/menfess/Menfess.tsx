@@ -3,13 +3,7 @@ import SendMenfess from "./send";
 import { useState } from "react";
 import MenfessCard from "./card";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-
-export interface MenfessInterface {
-  to: string;
-  from: string;
-  message: string;
-  createdAt: string;
-}
+import { Menfess as MenfessInterface } from "./types";
 
 const Menfess = ({ menfess }: { menfess: MenfessInterface[] }) => {
   const [isSendMenfess, setIsSendMenfess] = useState(false);

@@ -54,10 +54,14 @@ export default async function handler(
   if (req.method === "GET") {
     const data = await prisma.menfess.findMany({
       select: {
+        id: true,
         to: true,
         from: true,
         message: true,
         createdAt: true,
+        reactions: {
+          select: { type: true, count: true }
+        }
       },
       orderBy: {
         createdAt: "desc",
@@ -94,13 +98,17 @@ export default async function handler(
           message,
         },
       });
-      const twitterClient = new TwitterApi({
-        appKey: process.env.X_API_KEY!,
-        appSecret: process.env.X_API_KEY_SECRET!,
-        accessToken: process.env.X_ACCESS_TOKEN!,
-        accessSecret: process.env.X_ACCESS_TOKEN_SECRET!,
-      });
+
       try {
+        if (process.env.X_API_KEY === undefined) {
+          throw new Error('X_API_KEY(s) are not defined in environment variables.')
+        }
+        const twitterClient = new TwitterApi({
+          appKey: process.env.X_API_KEY!,
+          appSecret: process.env.X_API_KEY_SECRET!,
+          accessToken: process.env.X_ACCESS_TOKEN!,
+          accessSecret: process.env.X_ACCESS_TOKEN_SECRET!,
+        });
         const fromUser =
           briefFamsData.find((fam) => fam.id === from.replace("fams/", ""))?.[
             "full-name"
