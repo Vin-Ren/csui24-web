@@ -103,7 +103,7 @@ const Menfess = ({ menfess }: { menfess: MenfessType[] }) => {
             </HoverBorderGradient>
           </div>
           <p className="text-center text-slate-400 text-sm font-semibold">
-            We do not store your data. The submitted menfess may have been sent
+            We don&apos;t store your data. The submitted menfess may have been sent
             by someone else. Your privacy is fully protected.
           </p>
         </div>
