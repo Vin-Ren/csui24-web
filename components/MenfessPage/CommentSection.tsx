@@ -1,9 +1,11 @@
+"use client";
 import {
   Plane,
   MailCheck,
   CircleUserRound,
   MessageCircleMore,
   MessageSquareText,
+  Send,
 } from "lucide-react";
 import Link from "next/link";
 import { briefFamsData } from "@/modules/fams-data";
@@ -13,6 +15,14 @@ import { ReactionBar } from "./reactionBar";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import formatRelativeTime from "@/lib/formatRelativeTime";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+
+interface CommentType {
+  author: string;
+  content: string;
+  createdAt: string;
+}
 
 const CommentSection = ({
   menfess,
@@ -23,11 +33,45 @@ const CommentSection = ({
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) => {
+  const [InputComment, setInputComment] = useState("");
   const { to, from, message, createdAt, _count } = menfess;
   const { comments } = _count;
   const toIsFam = to.startsWith("fams/");
   const fromIsFam = from.startsWith("fams/");
   const Name = localStorage.getItem("CommentName") || "SipalingAnonym";
+
+  const handleSend = async () => {
+    if (InputComment.trim() === "") {
+      toast.error("Comment cannot be empty");
+      return;
+    }
+    const loader = toast.loading("Sending comment...");
+    const res = await fetch("/api/menfess-comment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        menfessId: menfess.id,
+        content: InputComment,
+        author: Name,
+      }),
+    });
+    const resJSON = await res.json();
+    if (resJSON.success) {
+      toast.success("Comment sent successfully", {
+        id: loader,
+      });
+      setInputComment("");
+      onOpenChange(false);
+    } else {
+      toast.error(resJSON.message, {
+        id: loader,
+      });
+      console.error("Failed to send comment:", resJSON.message);
+    }
+  };
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="bg-[#03045e] h-96 flex flex-col rounded-3xl bg-opacity-30 border border-[#717174] text-white">
@@ -165,13 +209,17 @@ const CommentSection = ({
             </div>
 
             {/* SEND KOMEN */}
-            <div className="flex gap-3 items-center">
-              <CircleUserRound size={30} />
+            <div className="flex gap-3 items-center mr-3 ml-1">
               <Input
                 className="bg-transparent w-full border-[#717174]"
                 type="text"
                 placeholder={`Comment as ${Name}.....`}
+                value={InputComment}
+                onChange={(e) => setInputComment(e.target.value)}
               />
+              <button onClick={handleSend}>
+                <Send size={25} />
+              </button>
             </div>
             {/* SEND KOMEN */}
           </div>
