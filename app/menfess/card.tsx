@@ -47,6 +47,8 @@ const MenfessCard = ({
                 <Link
                   href={"/" + from}
                   className="hover:opacity-80 duration-300 transition-all cursor-pointer"
+                  data-umami-event="menfess-redirect-profile"
+                  data-umami-event-redirect-to={"/" + from}
                 >
                   <p className="text-lg font-bold truncate whitespace-nowrap overflow-hidden max-w-full">
                     {
@@ -88,6 +90,8 @@ const MenfessCard = ({
                 <Link
                   href={"/" + to}
                   className="hover:opacity-80 duration-300 transition-all cursor-pointer"
+                  data-umami-event="menfess-redirect-profile"
+                  data-umami-event-redirect-to={"/" + to}
                 >
                   <p className="text-lg font-bold truncate whitespace-nowrap overflow-hidden max-w-full">
                     {

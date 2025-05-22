@@ -197,6 +197,7 @@ const SendMenfess = () => {
         onClick={handleSend}
         className="w-fit px-6 self-end border bg-slate-400"
         variant={"secondary"}
+        data-umami-event="submit-menfess"
       >
         <Send size={15} />
         Send
