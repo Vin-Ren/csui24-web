@@ -1,8 +1,7 @@
-
 export type Reaction = {
-  type: string
-  count: number
-}
+  type: string;
+  count: number;
+};
 
 export interface MenfessType {
   id: string;
@@ -10,5 +9,8 @@ export interface MenfessType {
   from: string;
   message: string;
   createdAt: string;
-  reactions: Reaction[]
+  reactions: Reaction[];
+  _count: {
+    comments: number;
+  };
 }

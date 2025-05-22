@@ -1,4 +1,9 @@
-import { Plane, MailCheck, CalendarDays } from "lucide-react";
+import {
+  Plane,
+  MailCheck,
+  CalendarDays,
+  MessageCircleMore,
+} from "lucide-react";
 import formatRelativeTime from "@/lib/formatRelativeTime";
 import Link from "next/link";
 import { briefFamsData } from "@/modules/fams-data";
@@ -6,9 +11,9 @@ import { Img } from "react-image";
 import { MenfessType } from "./types";
 import { ReactionBar } from "./reactionBar";
 
-
 const MenfessCard = ({ menfess }: { menfess: MenfessType }) => {
-  const { to, from, message, createdAt } = menfess;
+  const { to, from, message, createdAt, _count } = menfess;
+  const { comments } = _count;
   const toIsFam = to.startsWith("fams/");
   const fromIsFam = from.startsWith("fams/");
 
@@ -105,15 +110,28 @@ const MenfessCard = ({ menfess }: { menfess: MenfessType }) => {
         </div>
         <div className="h-[0.5px] w-full bg-[#D9D9D9]"></div>
       </div>
-      <div className="w-full h-full text-white font-sans flex items-center justify-center px-6 overflow-y-auto max-h-full">
-        <p className="text-center break-words w-full h-full">{message}</p>
+      <div className="w-full h-full text-white font-sans px-6">
+        <div className="flex justify-center items-center h-full max-h-full overflow-y-auto">
+          <p className="text-center break-words w-full h-fit">{message}</p>
+        </div>
       </div>
-      <div className="w-full flex flex-row flex-wrap justify-between gap-4 p-6 max-sm:p-3">
-        <ReactionBar menfessId={menfess.id} initialReactions={menfess.reactions}/>
-        <div className="flex gap-1 items-center">
-          <div className="flex justify-center items-center p-1 rounded-full border border-[#717174] ">
-            <CalendarDays size={14} />
-          </div>
+      <div className="w-full flex flex-col items-center gap-2 p-6 max-sm:p-3">
+        <div className="w-full flex justify-between">
+          <ReactionBar
+            menfessId={menfess.id}
+            initialReactions={menfess.reactions}
+          />
+          <Link
+            href={`/menfess/${menfess.id}`}
+            className="flex items-center gap-1"
+          >
+            <MessageCircleMore size={25} />
+            <p className="text-sm font-medium">{comments}</p>
+          </Link>
+        </div>
+
+        <div className="flex gap-2 items-center self-end">
+          <CalendarDays size={14} />
           <p className="text-xs">{formatRelativeTime(new Date(createdAt))}</p>
         </div>
       </div>
