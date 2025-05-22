@@ -31,6 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       return res.status(200).json({ success: true, newCount: updated.count })
     } catch (error) {
+      console.log(error)
       return res.status(500).json({ error: 'Database error' })
     }
   }
@@ -49,6 +50,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       return res.status(200).json(reactions)
     } catch (error) {
+      console.log(error)
       return res.status(500).json({ error: 'Database error' })
     }
   }
