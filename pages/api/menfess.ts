@@ -78,13 +78,86 @@ export default async function handler(
         data: null,
       });
     }
-    if (to.length > 60 || from.length > 60 || message.length > 500) {
+    if (to.length > 60 || from.length > 60 || message.length > 280) {
       return res.status(400).json({
         success: false,
         message: "Input exceeds maximum length",
         data: null,
       });
     }
+    const filter = [
+      "slot gacor",
+      "gacor maxwin",
+      "maxwin",
+      "jud1",
+      "sl0t",
+      "s1tus",
+      "g4cor",
+      "situs terpercaya",
+      "situs slot",
+      "situs slot gacor",
+      "situs slot gacor terpercaya",
+      "situs slot gacor maxwin",
+      "situs slot gacor maxwin terpercaya",
+      "judi slot",
+      "judi online",
+      "judi slot",
+      "judi slot online",
+      "judi slot gacor",
+      "judi slot gacor terpercaya",
+      "judi slot gacor maxwin",
+      "judi slot gacor maxwin terpercaya",
+      "situs judi",
+      "situs judi online",
+      "situs judi slot",
+      "situs judi slot online",
+      "situs judi slot gacor",
+      "situs judi slot gacor terpercaya",
+      "situs judi slot gacor maxwin",
+      "situs judi slot gacor maxwin terpercaya",
+      "(.)com",
+      "(.)net",
+      "(.)org",
+      "(.)id",
+      "(.)io",
+      "(.)dev",
+      "*xyz",
+      "*com",
+      "*net",
+      "*org",
+      "*id",
+      "*io",
+      "*dev",
+    ];
+    const isLink = (str: string) => {
+      const regex = /https?:\/\/[^\s]+/;
+      const regex2 = /www\.[^\s]+/;
+      const domainRegex =
+        /\.(com|net|org|id|io|dev|xyz|me|co|ai|app|tv|gov|edu|biz|info)/i;
+      return regex.test(str) || regex2.test(str) || domainRegex.test(str);
+    };
+    if (isLink(to) || isLink(from) || isLink(message)) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Input link are not allowed, if you want to send link, please contact one of ITDEV CSUI24 team",
+        data: null,
+      });
+    }
+    // console.log(message.le)
+    filter.forEach((word) => {
+      if (
+        message.toLowerCase().includes(word) ||
+        to.toLowerCase().includes(word) ||
+        from.toLowerCase().includes(word)
+      ) {
+        return res.status(400).json({
+          success: false,
+          message: "Input contains prohibited words",
+          data: null,
+        });
+      }
+    });
 
     try {
       const newMenfess = await prisma.menfess.create({
