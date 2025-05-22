@@ -26,8 +26,10 @@ export function ReactionBar({ menfessId, initialReactions }: ReactionBarProps) {
     `menfess-reactions:${menfessId}`,
     new Set()
   )
+  const [loadingType, setLoadingType] = useState<string | null>(null)
 
   const handleReact = async (type: string) => {
+    setLoadingType(type)
     try {
       const res = await fetch('/api/menfess-reaction', {
         method: 'POST',
@@ -56,6 +58,8 @@ export function ReactionBar({ menfessId, initialReactions }: ReactionBarProps) {
       }
     } catch (err) {
       console.error('Failed to send reaction', err)
+    } finally {
+      setLoadingType(null)
     }
   }
 
@@ -69,6 +73,7 @@ export function ReactionBar({ menfessId, initialReactions }: ReactionBarProps) {
             key={type}
             onClick={() => handleReact(type)}
             type="button"
+            disabled={loadingType!==null}
             aria-label={`React with ${type}`}
             className={`
           flex items-center gap-1 px-3 py-1.5 rounded-xl border text-sm font-medium transition-all
