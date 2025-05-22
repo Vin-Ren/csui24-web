@@ -78,6 +78,7 @@ export default async function handler(
         data: null,
       });
     }
+    console.log(message.length);
     if (to.length > 60 || from.length > 60 || message.length > 280) {
       return res.status(400).json({
         success: false,
@@ -120,15 +121,18 @@ export default async function handler(
       "(.)org",
       "(.)id",
       "(.)io",
-      "(.)dev",
-      "*xyz",
-      "*com",
-      "*net",
-      "*org",
-      "*id",
-      "*io",
-      "*dev",
     ];
+    const containsProhibitedWord = filter.some((word) =>
+      [to, from, message].some((field) => field.toLowerCase().includes(word))
+    );
+
+    if (containsProhibitedWord) {
+      return res.status(400).json({
+        success: false,
+        message: "Input contains prohibited words",
+        data: null,
+      });
+    }
     const isLink = (str: string) => {
       const regex = /https?:\/\/[^\s]+/;
       const regex2 = /www\.[^\s]+/;
@@ -144,20 +148,6 @@ export default async function handler(
         data: null,
       });
     }
-    // console.log(message.le)
-    filter.forEach((word) => {
-      if (
-        message.toLowerCase().includes(word) ||
-        to.toLowerCase().includes(word) ||
-        from.toLowerCase().includes(word)
-      ) {
-        return res.status(400).json({
-          success: false,
-          message: "Input contains prohibited words",
-          data: null,
-        });
-      }
-    });
 
     try {
       const newMenfess = await prisma.menfess.create({
