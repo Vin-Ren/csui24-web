@@ -60,8 +60,13 @@ export default async function handler(
         message: true,
         createdAt: true,
         reactions: {
-          select: { type: true, count: true }
-        }
+          select: { type: true, count: true },
+        },
+        _count: {
+          select: {
+            comments: true, // jumlah komentar
+          },
+        },
       },
       orderBy: {
         createdAt: "desc",
@@ -163,8 +168,10 @@ export default async function handler(
       });
 
       try {
-        if (process.env.X_API_KEY === undefined) {
-          throw new Error('X_API_KEY(s) are not defined in environment variables.')
+        if (!process.env.X_API_KEY || process.env.PRODUCTION === "false") {
+          throw new Error(
+            "You are not allowed to send tweet from this environment"
+          );
         }
         const twitterClient = new TwitterApi({
           appKey: process.env.X_API_KEY!,
