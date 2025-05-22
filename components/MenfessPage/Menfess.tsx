@@ -10,9 +10,18 @@ const Menfess = ({ menfess }: { menfess: MenfessType[] }) => {
   const [isSendMenfess, setIsSendMenfess] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [showCommentSection, setShowCommentSection] = useState(false);
-  const [selectedMenfess, setSelectedMenfess] = useState<MenfessType>(
-    menfess[0]
-  );
+  const [selectedMenfess, setSelectedMenfess] = useState<MenfessType>({
+    id: "",
+    to: "",
+    from: "",
+    message: "",
+    createdAt: "",
+    reactions: [],
+    _count: {
+      comments: 0,
+    },
+  });
+  const [isAdmin, setIsAdmin] = useState("");
 
   // Pagination settings
   const cardsPerPage = 10;
@@ -69,6 +78,10 @@ const Menfess = ({ menfess }: { menfess: MenfessType[] }) => {
     if (!localStorage.getItem("CommentName")) {
       fetchData();
     }
+    const admin = localStorage.getItem("admin_key");
+    if (admin) {
+      setIsAdmin(admin);
+    }
   }, []);
 
   return (
@@ -103,8 +116,8 @@ const Menfess = ({ menfess }: { menfess: MenfessType[] }) => {
             </HoverBorderGradient>
           </div>
           <p className="text-center text-slate-400 text-sm font-semibold">
-            We don&apos;t store your data. The submitted menfess may have been sent
-            by someone else. Your privacy is fully protected.
+            We don&apos;t store your data. The submitted menfess may have been
+            sent by someone else. Your privacy is fully protected.
           </p>
         </div>
       )}
@@ -118,6 +131,7 @@ const Menfess = ({ menfess }: { menfess: MenfessType[] }) => {
             }}
             key={menfess.id}
             menfess={menfess}
+            tokenAdmin={isAdmin}
           />
         ))}
       </div>

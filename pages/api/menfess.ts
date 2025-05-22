@@ -215,6 +215,65 @@ export default async function handler(
         data: null,
       });
     }
+  } else if (req.method === "DELETE") {
+    // Get the authorization header
+    const authHeader = req.headers.authorization;
+
+    // Check if authorization header exists and starts with "Bearer "
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).json({
+        success: false,
+        message: "Unauthorized: Missing or invalid token",
+        data: null,
+      });
+    }
+
+    // Extract the token
+    const token = authHeader.split(" ")[1];
+
+    // Verify the token (replace with your actual token validation logic)
+    if (token !== process.env.ADMIN_PASSWORD) {
+      return res.status(403).json({
+        success: false,
+        message: "Forbidden: Invalid authorization token",
+        data: null,
+      });
+    }
+    const { id } = req.body;
+    if (!id) {
+      return res.status(400).json({
+        success: false,
+        message: "ID is required",
+        data: null,
+      });
+    }
+    try {
+      await prisma.comment.deleteMany({
+        where: {
+          menfessId: id,
+        },
+      });
+      await prisma.reaction.deleteMany({
+        where: { menfessId: id },
+      });
+      await prisma.menfess.delete({
+        where: {
+          id: id,
+        },
+      });
+      return res.status(200).json({
+        success: true,
+        message: "Menfess deleted successfully",
+        data: null,
+      });
+    } catch (e) {
+      console.log(e);
+      return res.status(500).json({
+        success: false,
+        message: "Internal server error",
+        data: null,
+      });
+    }
   } else {
     return res.status(405).json({
       success: false,

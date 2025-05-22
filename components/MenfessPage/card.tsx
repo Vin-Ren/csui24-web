@@ -3,6 +3,7 @@ import {
   MailCheck,
   CalendarDays,
   MessageCircleMore,
+  Trash2,
 } from "lucide-react";
 import formatRelativeTime from "@/lib/formatRelativeTime";
 import Link from "next/link";
@@ -10,22 +11,60 @@ import { briefFamsData } from "@/modules/fams-data";
 import { Img } from "react-image";
 import { MenfessType } from "./types";
 import { ReactionBar } from "./reactionBar";
-
+import { toast } from "sonner";
 const MenfessCard = ({
   menfess,
   onCommentClick,
+  tokenAdmin,
 }: {
   menfess: MenfessType;
   onCommentClick?: (menfess: MenfessType) => void;
+  tokenAdmin: string;
 }) => {
   const { to, from, message, createdAt, _count } = menfess;
   const { comments } = _count;
   const toIsFam = to.startsWith("fams/");
   const fromIsFam = from.startsWith("fams/");
 
+  const handleDelete = async () => {
+    const loadingToast = toast.loading("Deleting menfess...");
+    try {
+      const res = await fetch("/api/menfess", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${tokenAdmin}`, // Add auth token
+        },
+        body: JSON.stringify({
+          id: menfess.id,
+        }),
+      });
+
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error.message || "Failed to delete menfess");
+      }
+      const resJSON = await res.json();
+      toast.dismiss(loadingToast);
+      if (!resJSON.success) {
+        toast.error("Failed to delete menfess");
+      }
+      toast.success("Menfess deleted successfully, refresh your page to see the changes");
+    } catch (error) {
+      toast.dismiss(loadingToast);
+      toast.error("Failed to delete menfess");
+      console.error("Error deleting menfess:", error);
+    }
+  };
+
   return (
     <div className="w-full h-96 rounded-xl bg-[#03045e] flex flex-col bg-opacity-30 border border-[#717174] overflow-hidden">
-      <div className="h-fit p-6 max-sm:p-3 flex flex-col gap-2">
+      <div className="relative h-fit p-6 max-sm:p-3 flex flex-col gap-2">
+        {tokenAdmin && (
+          <button onClick={handleDelete} className="absolute top-6 right-6">
+            <Trash2 size={25} />
+          </button>
+        )}
         <div className="w-full flex flex-col max-sm:gap-2 gap-4 text-white">
           <div className="w-full flex gap-3 items-center">
             {fromIsFam ? (
