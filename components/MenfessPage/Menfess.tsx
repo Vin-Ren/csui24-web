@@ -91,15 +91,21 @@ const Menfess = ({ menfess }: { menfess: MenfessType[] }) => {
       {isSendMenfess ? (
         <SendMenfess />
       ) : (
-        <div className="flex justify-center">
-          <HoverBorderGradient
-            containerClassName="rounded-xl"
-            as="button"
-            className="bg-black flex text-white items-center space-x-2 font-sfpro tracking-widest"
-            onClick={() => setIsSendMenfess(true)}
-          >
-            <span>Create your menfess!</span>
-          </HoverBorderGradient>
+        <div className="flex flex-col gap-2">
+          <div className="flex justify-center">
+            <HoverBorderGradient
+              containerClassName="rounded-xl"
+              as="button"
+              className="bg-black flex text-white items-center space-x-2 font-sfpro tracking-widest"
+              onClick={() => setIsSendMenfess(true)}
+            >
+              <span>Create your menfess!</span>
+            </HoverBorderGradient>
+          </div>
+          <p className="text-center text-slate-400 text-sm font-semibold">
+            We do not store your data. The submitted menfess may have been sent
+            by someone else. Your privacy is fully protected.
+          </p>
         </div>
       )}
 

@@ -50,7 +50,7 @@ export default async function handler(
   }
 
   if (req.method === "GET") {
-    const { id } = req.body;
+    const { id } = req.query;
     if (!id) {
       return res.status(400).json({
         success: false,
@@ -59,14 +59,18 @@ export default async function handler(
       });
     }
     try {
+      const menfessId = Array.isArray(id) ? id[0] : id;
       const menfessComment = await prisma.comment.findMany({
         where: {
-          menfessId: id,
+          menfessId: menfessId,
         },
         select: {
           author: true,
           content: true,
           createdAt: true,
+        },
+        orderBy: {
+          createdAt: "asc",
         },
       });
 

@@ -2,7 +2,6 @@
 import {
   Plane,
   MailCheck,
-  CircleUserRound,
   MessageCircleMore,
   MessageSquareText,
   Send,
@@ -17,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import formatRelativeTime from "@/lib/formatRelativeTime";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface CommentType {
   author: string;
@@ -38,7 +38,43 @@ const CommentSection = ({
   const { comments } = _count;
   const toIsFam = to.startsWith("fams/");
   const fromIsFam = from.startsWith("fams/");
-  const Name = localStorage.getItem("CommentName") || "SipalingAnonym";
+  const [Name, setName] = useState("SipalingAnonym");
+  const [Data, setData] = useState<CommentType[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const res = await fetch(`/api/menfess-comment?id=${menfess.id}`, {
+          method: "GET",
+        });
+        if (!res.ok) {
+          throw new Error("Failed to fetch menfess");
+        }
+        const resJSON: {
+          success: boolean;
+          message: string;
+          data: CommentType[];
+        } = await res.json();
+
+        if (resJSON.success) {
+          setData(resJSON.data);
+        } else {
+          console.error("Failed to fetch name:", resJSON.message);
+        }
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
+      }
+      setIsLoading(false);
+    };
+
+    const storedName = localStorage.getItem("CommentName");
+    if (storedName) {
+      setName(storedName);
+    }
+    fetchData();
+  }, [open, menfess.id]);
 
   const handleSend = async () => {
     if (InputComment.trim() === "") {
@@ -57,13 +93,17 @@ const CommentSection = ({
         author: Name,
       }),
     });
-    const resJSON = await res.json();
+    const resJSON: {
+      success: boolean;
+      message: string;
+      data: CommentType;
+    } = await res.json();
     if (resJSON.success) {
       toast.success("Comment sent successfully", {
         id: loader,
       });
       setInputComment("");
-      onOpenChange(false);
+      Data.push(resJSON.data);
     } else {
       toast.error(resJSON.message, {
         id: loader,
@@ -189,24 +229,40 @@ const CommentSection = ({
           <div className="min-h-[0.5px] w-full bg-[#D9D9D9]"></div> {/* Line */}
           {/* Comment Section */}
           <div className="w-full py-2 flex flex-col gap-3">
-            <div className="flex gap-[22px]">
-              <MessageSquareText className="mt-2" size={20} />
-              <div className="bg-blue-800/20 w-full rounded-lg p-4">
-                <div className="flex items-center">
-                  <span className="font-bold truncate whitespace-nowrap overflow-hidden text-sm">
-                    Fauzan
-                  </span>
-                  <span className="ml-1 text-sm text-gray-300">•</span>
-                  <span className="ml-1 truncate whitespace-nowrap overflow-hidden text-xs">
-                    {formatRelativeTime(new Date("2025-05-22T12:00:00Z"))}
-                  </span>
-                </div>
-                <p className="text-sm">
-                  teteaifjeia teteaifjeia teteaifjeia teteaifjeia teteaifjeia
-                  teteaifjeia teteaifjeia teteaifjeia teteaifjeia teteaifjeia
-                </p>
+            {isLoading ? (
+              <>
+                <Skeleton className="h-10 bg-white/20 w-full rounded-lg" />
+                <Skeleton className="h-10 bg-white/20 w-full rounded-lg" />
+                <Skeleton className="h-10 bg-white/20 w-full rounded-lg" />
+              </>
+            ) : Data.length > 0 ? (
+              Data.map((comment, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={`flex mx-1 gap-[22px] ${comment.author === Name ? "flex-row-reverse" : ""}`}
+                  >
+                    <MessageSquareText className="mt-2" size={20} />
+                    <div className="bg-blue-800/20 w-fit rounded-lg p-4">
+                      <div className="flex items-center">
+                        <span className="font-bold truncate whitespace-nowrap overflow-hidden text-sm">
+                          {comment.author}
+                        </span>
+                        <span className="ml-1 text-sm text-gray-300">•</span>
+                        <span className="ml-1 truncate whitespace-nowrap overflow-hidden text-xs">
+                          {formatRelativeTime(comment.createdAt)}
+                        </span>
+                      </div>
+                      <p className="text-sm">{comment.content}</p>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <div className="text-sm text-center">
+                No comments yet. Be the first to comment!
               </div>
-            </div>
+            )}
 
             {/* SEND KOMEN */}
             <div className="flex gap-3 items-center mr-3 ml-1">
