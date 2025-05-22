@@ -11,7 +11,13 @@ import { Img } from "react-image";
 import { MenfessType } from "./types";
 import { ReactionBar } from "./reactionBar";
 
-const MenfessCard = ({ menfess }: { menfess: MenfessType }) => {
+const MenfessCard = ({
+  menfess,
+  onCommentClick,
+}: {
+  menfess: MenfessType;
+  onCommentClick?: (menfess: MenfessType) => void;
+}) => {
   const { to, from, message, createdAt, _count } = menfess;
   const { comments } = _count;
   const toIsFam = to.startsWith("fams/");
@@ -110,10 +116,8 @@ const MenfessCard = ({ menfess }: { menfess: MenfessType }) => {
         </div>
         <div className="h-[0.5px] w-full bg-[#D9D9D9]"></div>
       </div>
-      <div className="w-full h-full text-white font-sans px-6">
-        <div className="flex justify-center items-center h-full max-h-full overflow-y-auto">
-          <p className="text-center break-words w-full h-fit">{message}</p>
-        </div>
+      <div className="w-full h-full text-white font-sans flex items-center justify-center px-6 overflow-y-auto max-h-full">
+        <p className="text-center break-words w-full h-full">{message}</p>
       </div>
       <div className="w-full flex flex-col items-center gap-2 p-6 max-sm:p-3">
         <div className="w-full flex justify-between">
@@ -121,13 +125,14 @@ const MenfessCard = ({ menfess }: { menfess: MenfessType }) => {
             menfessId={menfess.id}
             initialReactions={menfess.reactions}
           />
-          <Link
-            href={`/menfess/${menfess.id}`}
+          <button
+            // href={`/menfess/${menfess.id}`}
+            onClick={() => onCommentClick?.(menfess)}
             className="flex items-center gap-1"
           >
             <MessageCircleMore size={25} />
             <p className="text-sm font-medium">{comments}</p>
-          </Link>
+          </button>
         </div>
 
         <div className="flex gap-2 items-center self-end">
