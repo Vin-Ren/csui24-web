@@ -62,8 +62,8 @@ const Menfess = ({ menfess }: { menfess: MenfessType[] }) => {
       )}
       
       <div className="grid grid-cols-2 max-lg:grid-cols-1 gap-10">
-        {currentCards.map((menfess, index) => (
-          <MenfessCard key={index} menfess={menfess} />
+        {currentCards.map((menfess) => (
+          <MenfessCard key={menfess.id} menfess={menfess} />
         ))}
       </div>
       
