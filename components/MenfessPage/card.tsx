@@ -106,7 +106,7 @@ const MenfessCard = ({ menfess }: { menfess: MenfessType }) => {
         <div className="h-[0.5px] w-full bg-[#D9D9D9]"></div>
       </div>
       <div className="w-full h-full text-white font-sans flex items-center justify-center px-6 overflow-y-auto max-h-full">
-        <p className="text-center break-words w-full">{message}</p>
+        <p className="text-center break-words w-full h-full">{message}</p>
       </div>
       <div className="w-full flex flex-row flex-wrap justify-between gap-4 p-6 max-sm:p-3">
         <ReactionBar menfessId={menfess.id} initialReactions={menfess.reactions}/>
