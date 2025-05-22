@@ -22,6 +22,7 @@ model Menfess {
   isPosted  Boolean    @default(false)
   createdAt DateTime   @default(now())
   reactions Reaction[]
+  comments  Comment[]
 }
 
 model Reaction {
@@ -32,4 +33,15 @@ model Reaction {
   count     Int     @default(0)
 
   @@unique([menfessId, type]) // one row per menfessId + reaction type
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  menfessId String
+  menfess   Menfess  @relation(fields: [menfessId], references: [id])
+  author    String   @default("SipalingPenyamar")
+  content   String
+  createdAt DateTime @default(now())
+
+  @@index([menfessId])
 }
