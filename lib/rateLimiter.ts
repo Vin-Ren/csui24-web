@@ -26,21 +26,14 @@ export function createRateLimiter(options: {
 }) {
   const { windowMs, maxRequests, maxEntries = 1000 } = options
 
-  const cache = new LRUCache<string, { count: number; lastRequest: number }>({
+  const cache = new LRUCache<string, { count: number }>({
     ttl: windowMs,
     max: maxEntries,
   })
 
   return function rateLimitMiddleware(req: NextApiRequest, res: NextApiResponse): boolean {
     const ip = getIP(req)
-    const now = Date.now()
-    const record = cache.get(ip) || { count: 0, lastRequest: now }
-    const delta = now - record.lastRequest
-
-    if (delta > windowMs) {
-      cache.set(ip, { count: 1, lastRequest: now })
-      return true
-    }
+    const record = cache.get(ip) || { count: 0 }
 
     if (record.count >= maxRequests) {
       res.status(429).json({
@@ -51,14 +44,10 @@ export function createRateLimiter(options: {
       return false
     }
 
-    cache.set(ip, {
-      count: record.count + 1,
-      lastRequest: record.lastRequest,
-    })
+    cache.set(ip, { count: record.count + 1 })
     return true
   }
 }
-
 
 // Rate limit to use globally
 // 30 Requests per 5 Minutes
