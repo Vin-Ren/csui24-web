@@ -34,7 +34,7 @@ export function ReactionBar({ menfessId, initialReactions }: ReactionBarProps) {
     try {
       setCounts((prev) => ({
         ...prev,
-        [type]: prevCnt+1,
+        [type]: clicked.has(type) ? prevCnt-1 : prevCnt+1,
       }));
       const res = await fetch("/api/menfess-reaction", {
         method: "POST",
