@@ -30,7 +30,12 @@ export function ReactionBar({ menfessId, initialReactions }: ReactionBarProps) {
 
   const handleReact = async (type: string) => {
     setLoadingType(type);
+    const prevCnt=counts[type];
     try {
+      setCounts((prev) => ({
+        ...prev,
+        [type]: prevCnt+1,
+      }));
       const res = await fetch("/api/menfess-reaction", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -59,6 +64,10 @@ export function ReactionBar({ menfessId, initialReactions }: ReactionBarProps) {
       }
     } catch (err) {
       console.error("Failed to send reaction", err);
+      setCounts((prev) => ({
+        ...prev,
+        [type]: prevCnt,
+      }));
     } finally {
       setLoadingType(null);
     }
@@ -79,7 +88,7 @@ export function ReactionBar({ menfessId, initialReactions }: ReactionBarProps) {
             className={`
           flex items-center gap-1 px-3 py-1.5 rounded-xl border text-sm font-medium transition-all
           ${
-            isClicked
+            ((isClicked && loadingType===null) || (!isClicked && loadingType===type))
               ? "bg-slate-800 border-blue-300 shadow-inner"
               : "bg-transparent text-white/80 border-white/20 hover:bg-white/10 hover:text-white"
           }
