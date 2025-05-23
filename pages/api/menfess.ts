@@ -1,56 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@/lib/generated/prisma";
-import { LRUCache } from "lru-cache";
 import { TwitterApi } from "twitter-api-v2";
 import { briefFamsData } from "@/modules/fams-data";
+import { globalRateLimit } from "@/lib/rateLimiter";
 
 const prisma = new PrismaClient();
-
-const rateLimit = new LRUCache<string, { count: number; lastRequest: number }>({
-  max: 500,
-  ttl: 1000 * 60, // 60 seconds
-});
-
-const RATE_LIMIT = 5; // max requests per IP per ttl
-
-function getIP(req: NextApiRequest) {
-  return (
-    req.headers["x-forwarded-for"]?.toString().split(",")[0] ||
-    req.socket.remoteAddress ||
-    ""
-  );
-}
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const ip = getIP(req);
-
-  if (req.method === "POST") {
-    const now = Date.now();
-    const record = rateLimit.get(ip) || { count: 0, lastRequest: now };
-    const delta = now - record.lastRequest;
-
-    if (delta > 60 * 1000) {
-      // Reset count after ttl
-      rateLimit.set(ip, { count: 1, lastRequest: now });
-    } else {
-      if (record.count >= RATE_LIMIT) {
-        return res.status(429).json({
-          success: false,
-          message: "Too many requests. Please try again later.",
-          data: null,
-        });
-      }
-      rateLimit.set(ip, {
-        count: record.count + 1,
-        lastRequest: record.lastRequest,
-      });
-    }
-    console.log(rateLimit.get(ip));
-  }
-
   if (req.method === "GET") {
     const data = await prisma.menfess.findMany({
       select: {
@@ -78,6 +37,7 @@ export default async function handler(
       data,
     });
   } else if (req.method === "POST") {
+    if (!globalRateLimit(req, res)) return;
     const { to, from, message } = req.body;
 
     if (!to || !from || !message) {
