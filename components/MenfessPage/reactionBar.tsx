@@ -29,13 +29,17 @@ export function ReactionBar({ menfessId, initialReactions }: ReactionBarProps) {
   const [loadingType, setLoadingType] = useState<string | null>(null);
 
   const handleReact = async (type: string) => {
+    if (loadingType!==null) return; // Allows only one reaction to go through at a time
     setLoadingType(type);
+
     const prevCnt=counts[type];
+    
     try {
       setCounts((prev) => ({
         ...prev,
         [type]: clicked.has(type) ? prevCnt-1 : prevCnt+1,
       }));
+      
       const res = await fetch("/api/menfess-reaction", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -46,7 +50,6 @@ export function ReactionBar({ menfessId, initialReactions }: ReactionBarProps) {
         }),
       });
 
-      console.log(res);
       if (res.ok) {
         const resData = await res.json();
         setCounts((prev) => ({
@@ -88,7 +91,7 @@ export function ReactionBar({ menfessId, initialReactions }: ReactionBarProps) {
             className={`
           flex items-center gap-1 px-3 py-1.5 rounded-xl border text-sm font-medium transition-all
           ${
-            ((isClicked && loadingType===null) || (!isClicked && loadingType===type))
+            ((isClicked && loadingType!==type) || (!isClicked && loadingType===type))
               ? "bg-slate-800 border-blue-300 shadow-inner"
               : "bg-transparent text-white/80 border-white/20 hover:bg-white/10 hover:text-white"
           }
