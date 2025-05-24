@@ -21,14 +21,6 @@ const SendMenfess = () => {
   }, [to]);
 
   const [from, setFrom] = useState("");
-  const [paciliansFrom, setPaciliansFrom] = useState("");
-  const [suggestionsFrom, setSuggestionsFrom] = useState(false);
-  const filteredFrom = useMemo(() => {
-    return briefFamsData.filter((entry) => {
-      const name = entry["full-name"].toLowerCase();
-      return name.includes(from.toLowerCase());
-    });
-  }, [from]);
 
   const handleSend = async () => {
     if (to.length === 0 || from.length === 0 || message.length === 0) {
@@ -44,11 +36,6 @@ const SendMenfess = () => {
       setTo("fams/" + paciliansTo);
       setPaciliansTo("");
       menfess.to = "fams/" + paciliansTo;
-    }
-    if (paciliansFrom) {
-      setFrom("fams/" + paciliansFrom);
-      setPaciliansFrom("");
-      menfess.from = "fams/" + paciliansFrom;
     }
     console.log(to, from, message);
     const loader = toast.loading("Sending menfess...");
@@ -91,44 +78,9 @@ const SendMenfess = () => {
               placeholder="Who’s this from?"
               onChange={(e) => {
                 setFrom(e.target.value);
-                setPaciliansFrom("");
               }}
               value={from}
-              onFocus={() => {
-                setSuggestionsFrom(true);
-              }}
-              onBlur={() => {
-                setTimeout(() => {
-                  setSuggestionsFrom(false);
-                }, 200);
-              }}
             />
-            <div
-              className={`${suggestionsFrom ? "" : "hidden"} absolute w-full h-fit max-h-48 bg-white rounded-b-lg overflow-y-auto overflow-x-hidden flex flex-col gap-1`}
-            >
-              {filteredFrom.map((entry) => {
-                return (
-                  <div
-                    className="p-2 text-black hover:translate-x-2 transition-all flex items-center gap-2 cursor-pointer rounded-b-lg"
-                    key={entry.id}
-                    onClick={() => {
-                      setPaciliansFrom(entry.id);
-                      setFrom(entry.id);
-                      filteredFrom.length = 0;
-                    }}
-                  >
-                    <Image
-                      src={"/" + entry["image-filename"]}
-                      alt={entry["full-name"]}
-                      width={16}
-                      height={16}
-                      className="rounded-full"
-                    />
-                    <p className="text-sm font-sfReg">{entry["full-name"]}</p>
-                  </div>
-                );
-              })}
-            </div>
           </div>
         </div>
         {/* End From */}
