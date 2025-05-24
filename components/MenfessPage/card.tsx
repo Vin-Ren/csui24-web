@@ -24,7 +24,6 @@ const MenfessCard = ({
   const { to, from, message, createdAt, _count } = menfess;
   const { comments } = _count;
   const toIsFam = to.startsWith("fams/");
-  const fromIsFam = from.startsWith("fams/");
 
   const handleDelete = async () => {
     const loadingToast = toast.loading("Deleting menfess...");
