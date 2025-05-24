@@ -26,7 +26,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const initAmt = action === 'remove' ? 0 : 1;
       const incrAmt = action === 'remove' ? -1 : 1;
       const updated = await prisma.reaction.upsert({
-        where: { menfessId_type: { menfessId, type } },
+        // if action is remove, then we need to check the existence of atleast 1 like.
+        where: { menfessId_type: { menfessId, type }, count: {gte: action==='remove' ? 1 : 0} }, 
         create: { menfessId, type, count: initAmt },
         update: { count: { increment: incrAmt } },
       })
