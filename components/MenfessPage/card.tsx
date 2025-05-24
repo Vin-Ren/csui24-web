@@ -67,46 +67,14 @@ const MenfessCard = ({
         )}
         <div className="w-full flex flex-col max-sm:gap-2 gap-4 text-white">
           <div className="w-full flex gap-3 items-center">
-            {fromIsFam ? (
-              <Img
-                src={
-                  "/" +
-                    briefFamsData.find(
-                      (fam) => fam.id === from.replace("fams/", "")
-                    )?.["image-filename"] || ""
-                }
-                alt="profile"
-                width={30}
-                height={30}
-                className="rounded-full"
-              />
-            ) : (
-              <div className="flex justify-center items-center p-2 rounded-full border border-[#717174] ">
-                <Plane size={14} />
-              </div>
-            )}
+            <div className="flex justify-center items-center p-2 rounded-full border border-[#717174] ">
+              <Plane size={14} />
+            </div>
             <div className="w-full flex flex-col">
               <p className="text-xs">From</p>
-              {fromIsFam ? (
-                <Link
-                  href={"/" + from}
-                  className="hover:opacity-80 duration-300 transition-all cursor-pointer"
-                  data-umami-event="menfess-redirect-profile"
-                  data-umami-event-redirect-to={"/" + from}
-                >
-                  <p className="text-lg font-bold truncate whitespace-nowrap overflow-hidden max-w-full">
-                    {
-                      briefFamsData.find(
-                        (fam) => fam.id === from.replace("fams/", "")
-                      )?.["displayed-name"]
-                    }
-                  </p>
-                </Link>
-              ) : (
-                <p className="text-lg font-bold truncate whitespace-nowrap overflow-hidden max-w-full">
-                  {from}
-                </p>
-              )}
+              <p className="text-lg font-bold truncate whitespace-nowrap overflow-hidden max-w-full">
+                {from}
+              </p>
             </div>
           </div>
           <div className="w-full flex gap-3 items-center">
@@ -137,6 +105,9 @@ const MenfessCard = ({
                   data-umami-event="menfess-redirect-profile"
                   data-umami-event-redirect-to={"/" + to}
                 >
+                <p className="text-lg font-bold truncate whitespace-nowrap overflow-hidden max-w-full">
+                  {to}
+                </p>
                   <p className="text-lg font-bold truncate whitespace-nowrap overflow-hidden max-w-full">
                     {
                       briefFamsData.find(
