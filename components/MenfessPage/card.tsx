@@ -104,9 +104,6 @@ const MenfessCard = ({
                   data-umami-event="menfess-redirect-profile"
                   data-umami-event-redirect-to={"/" + to}
                 >
-                <p className="text-lg font-bold truncate whitespace-nowrap overflow-hidden max-w-full">
-                  {to}
-                </p>
                   <p className="text-lg font-bold truncate whitespace-nowrap overflow-hidden max-w-full">
                     {
                       briefFamsData.find(
