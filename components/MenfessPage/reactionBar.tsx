@@ -32,12 +32,12 @@ export function ReactionBar({ menfessId, initialReactions }: ReactionBarProps) {
     if (loadingType!==null) return; // Allows only one reaction to go through at a time
     setLoadingType(type);
 
-    const prevCnt=counts[type];
+    const prevCnt=counts[type] || 0;
     
     try {
       setCounts((prev) => ({
         ...prev,
-        [type]: clicked.has(type) ? prevCnt-1 : prevCnt+1,
+        [type]: Math.max(clicked.has(type) ? prevCnt-1 : prevCnt+1, 0),
       }));
       
       const res = await fetch("/api/menfess-reaction", {
