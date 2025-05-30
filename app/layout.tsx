@@ -85,7 +85,7 @@ export default function RootLayout({
         {process.env.NODE_ENV === 'production' && (
           <script
             defer
-            src="https://umamir.fly.dev/script.js"
+            src="https://umamir.nimby.fun/script.js"
             data-website-id="1857d05e-6ae5-41da-9456-2a1a0a7bf9ec"
           ></script>
         )}
