@@ -48,7 +48,7 @@ const MenfessPage = async () => {
     success: boolean;
     message: string;
     data: MenfessType[];
-  } = res.ok ? await res.json() : {};
+  } = res.ok ? await res.json() : {data: []};
 
   return <Menfess menfess={resJson.data} />;
 };
