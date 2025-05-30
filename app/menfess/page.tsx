@@ -58,11 +58,6 @@ const MenfessPage = async () => {
   } catch (e) {
     console.log(e)
   }
-  const resJson: {
-    success: boolean;
-    message: string;
-    data: MenfessType[];
-  } = res.ok ? await res.json() : {data: []};
 
   return <Menfess menfess={resJson.data} />;
 };
