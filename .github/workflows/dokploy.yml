@@ -1,0 +1,40 @@
+name: Build Docker images
+ 
+on:
+  push:
+    branches: ["main"]
+ 
+jobs:
+  build-and-push-dockerfile-image:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: registry.dokploy.nimby.fun
+          username: ${{ secrets.REGISTRY_DOKPLOY_USER }}
+          password: ${{ secrets.REGISTRY_DOKPLOY_PASS }}
+
+      # create a unique tag for each build for debugging
+      - name: Set Docker tag
+        id: date
+        run: echo "DATE_STAMP=$(date +%s)" > "$GITHUB_ENV"
+
+      - name: Build and push Docker images
+        uses: iloveitaly/github-action-nixpacks@main
+        with:
+          push: true
+          tags: |
+            ${{ env.IMAGE_NAME }}:custom-${{ env.DATE_STAMP }}
+            ${{ env.IMAGE_NAME }}:awesome-latest
+      
+      - name: Dokploy Deployment
+        uses: benbristow/dokploy-deploy-action@0.0.1
+        with:
+          auth_token: ${{ secrets.DOKPLOY_AUTH_TOKEN }}
+          application_id: ${{ secrets.DOKPLOY_APPLICATION_ID }}
+          dokploy_url: ${{ secrets.DOKPLOY_URL }}
