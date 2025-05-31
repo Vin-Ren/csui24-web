@@ -27,6 +27,14 @@ jobs:
         id: date
         run: echo "DATE_STAMP=$(date +%s)" > "$GITHUB_ENV"
 
+      - name: Create .env file
+        run: |
+          echo "ADMIN_PASSWORD=${{ secrets.ADMIN_PASSWORD }}" > .env
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env
+          echo "NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}" >> .env
+          echo "NEXT_PUBLIC_ENABLED_REACTIONS=${{ secrets.NEXT_PUBLIC_ENABLED_REACTIONS }}" >> .env
+          echo "PRODUCTION=${{ secrets.PRODUCTION }}" >> .env
+
       - name: Build and push Docker images
         uses: iloveitaly/github-action-nixpacks@main
         with:
@@ -34,12 +42,6 @@ jobs:
           tags: |
             ${{ env.IMAGE_NAME }}:custom-${{ env.DATE_STAMP }}
             ${{ env.IMAGE_NAME }}:latest
-          env: |
-            ADMIN_PASSWORD=${{ secrets.ADMIN_PASSWORD }}
-            DATABASE_URL=${{ secrets.DATABASE_URL }}
-            NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}
-            NEXT_PUBLIC_ENABLED_REACTIONS=${{ secrets.NEXT_PUBLIC_ENABLED_REACTIONS }}
-            PRODUCTION=${{ secrets.PRODUCTION }}
       
       - name: Trigger Dokploy Deployment
         run: |
