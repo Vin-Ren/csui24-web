@@ -29,23 +29,17 @@ jobs:
 
       - name: Build and push Docker images
         uses: iloveitaly/github-action-nixpacks@main
-        env:
-          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
-          NEXT_PUBLIC_ENABLED_REACTIONS: ${{ secrets.NEXT_PUBLIC_ENABLED_REACTIONS }}
-          PRODUCTION: ${{ secrets.PRODUCTION }}
         with:
           push: true
           tags: |
             ${{ env.IMAGE_NAME }}:custom-${{ env.DATE_STAMP }}
             ${{ env.IMAGE_NAME }}:latest
-          envs: |
-            ADMIN_PASSWORD
-            DATABASE_URL
-            NEXT_PUBLIC_BASE_URL
-            NEXT_PUBLIC_ENABLED_REACTIONS
-            PRODUCTION
+          env: |
+            ADMIN_PASSWORD=${{ secrets.ADMIN_PASSWORD }}
+            DATABASE_URL=${{ secrets.DATABASE_URL }}
+            NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}
+            NEXT_PUBLIC_ENABLED_REACTIONS=${{ secrets.NEXT_PUBLIC_ENABLED_REACTIONS }}
+            PRODUCTION=${{ secrets.PRODUCTION }}
       
       - name: Trigger Dokploy Deployment
         run: |
