@@ -45,7 +45,7 @@ const MenfessPage = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/menfess`, {
     cache: "no-store"
   });
-  const resJson = await res.json();
+  const resJson: {data: MenfessType[]} = await res.json();
 
   return <Menfess menfess={resJson.data} />;
 };
