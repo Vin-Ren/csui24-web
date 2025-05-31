@@ -42,21 +42,10 @@ export const metadata: Metadata = {
 
 
 const MenfessPage = async () => {
-  let resJson: {
-    success: boolean;
-    message: string;
-    data: MenfessType[];
-  } = {
-    success: false,
-    message: "",
-    data: []
-  };
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/menfess`);
-    resJson = await res.json();
-  } catch (e) {
-    console.log(e)
-  }
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/menfess`, {
+    cache: "no-store"
+  });
+  const resJson = await res.json();
 
   return <Menfess menfess={resJson.data} />;
 };
