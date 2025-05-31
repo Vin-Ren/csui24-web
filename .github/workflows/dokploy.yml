@@ -8,6 +8,8 @@ jobs:
   build-and-push-dockerfile-image:
     runs-on: ubuntu-latest
     environment: build-docker-image4
+    env:  # 👈 define your variable here
+      IMAGE_NAME: registry.dokploy.nimby.fun/csui24-web-dokploy
  
     steps:
       - name: Checkout repository
@@ -31,7 +33,7 @@ jobs:
           push: true
           tags: |
             ${{ env.IMAGE_NAME }}:custom-${{ env.DATE_STAMP }}
-            ${{ env.IMAGE_NAME }}:awesome-latest
+            ${{ env.IMAGE_NAME }}:latest
       
       - name: Dokploy Deployment
         uses: benbristow/dokploy-deploy-action@0.0.1
