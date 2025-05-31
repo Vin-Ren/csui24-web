@@ -36,7 +36,6 @@ jobs:
             ${{ env.IMAGE_NAME }}:latest
       
       - name: Trigger Dokploy Deployment
-        uses: dokploy/dokploy-action@v1
         run: |
             curl -X 'POST' \
             'https://dokploy.nimby.fun/api/trpc/application.deploy' \
