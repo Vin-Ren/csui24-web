@@ -52,7 +52,7 @@ const MenfessPage = async () => {
     data: []
   };
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/menfess`, {next: { revalidate: 30 }});
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/menfess`);
     resJson = await res.json();
   } catch (e) {
     console.log(e)
